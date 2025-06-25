@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Selection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 80px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+        }
+
+        .title {
+            font-size: 48px;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .role-cards {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .role-card {
+            width: 180px;
+            height: 140px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+            padding: 15px 20px;
+            gap: 10px;
+        }
+
+        .role-card.selected {
+            border-color: #3498db;
+            background-color: #f8fcff;
+        }
+
+        .role-card:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .role-card:hover .role-icon {
+            background: transparent;
+        }
+
+        .role-card:hover .role-label {
+            color: #3498db;
+        }
+
+        .role-icon {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .persona-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+
+        .role-card:hover .persona-image {
+            filter: hue-rotate(200deg) saturate(2) brightness(1.1);
+        }
+
+        .role-card.selected .persona-image {
+            filter: hue-rotate(200deg) saturate(2) brightness(1.1);
+        }
+
+        .checkmark {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: none;
+        }
+
+        .checkmark::after {
+            content: '✓';
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .role-card.selected .checkmark {
+            display: block;
+        }
+
+        .role-label {
+            font-size: 22px;
+            font-weight: 400;
+            color: #666;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .role-card.selected .role-label {
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        .continue-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .continue-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        .continue-btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3498db;
+        }
+
+        .dot.inactive {
+            background-color: #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+
+            .title {
+                font-size: 36px;
+            }
+
+            .role-cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .role-card {
+                width: 200px;
+            }
+        }
+
+        .png-icon {
+            width: 80px;
+            height: 80px;
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover .png-icon,
+        .role-card.selected .png-icon {
+            filter: hue-rotate(200deg) saturate(2) brightness(0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Please select your role</h1>
+        <p class="subtitle">
+            Let us know whether you're joining as an staff or an administrator. Just click the option that fits you best.
+        </p>
+        
+        <div class="role-cards">
+            <div class="role-card" data-role="admin" onclick="selectRole('admin')">
+                <div class="role-icon">
+                    <img src="17.png" alt="Admin" class="png-icon">
+                </div>
+                <span class="role-text">Admin</span>
+            </div>
+            
+            <div class="role-card" data-role="staff" onclick="selectRole('staff')">
+                <div class="role-icon">
+                    <img src="16.png" alt="Staff" class="png-icon">
+                </div>
+                <span class="role-text">Staff</span>
+            </div>
+        </div>
+        
+        <button class="continue-btn">Continue</button>
+        
+        <div class="progress-dots">
+            <div class="dot"></div>
+            <div class="dot inactive"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const roleCards = document.querySelectorAll('.role-card');
+            const continueBtn = document.querySelector('.continue-btn');
+            let selectedRole = null; // No default selection
+
+            // Handle role card selection
+            roleCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove selected class from all cards
+                    roleCards.forEach(c => c.classList.remove('selected'));
+                    
+                    // Add selected class to clicked card
+                    this.classList.add('selected');
+                    
+                    // Update selected role based on which card was clicked
+                    if (this.dataset.role === 'admin') {
+                        selectedRole = 'admin';
+                    } else if (this.dataset.role === 'staff') {
+                        selectedRole = 'staff';
+                    }
+                    
+                    console.log('Selected role:', selectedRole);
+                });
+            });
+
+            // Handle continue button click
+            continueBtn.addEventListener('click', function() {
+                if (selectedRole) {
+                    // Store the selected role for the next page
+                    localStorage.setItem('selectedRole', selectedRole);
+                    
+                    console.log(`Continuing with role: ${selectedRole}`);
+                    
+                    // Navigate to login page
+                    window.location.href = 'login.html';
+                } else {
+                    // Show error message if no role is selected
+                    alert('Please select a role before continuing');
+                }
+            });
+
+            // Add some interactive feedback
+            roleCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    if (!this.classList.contains('selected')) {
+                        this.style.borderColor = '#3498db';
+                    }
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('selected')) {
+                        this.style.borderColor = '#e0e0e0';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

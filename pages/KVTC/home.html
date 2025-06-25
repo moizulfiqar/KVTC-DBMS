@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KVTC - Student Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background: white;
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+            line-height: 1.2;
+        }
+
+        .brand-subtitle {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 2px;
+        }
+
+        .nav-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .role-indicator {
+            color: #2c3e50;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: #2c3e50;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            color: #e74c3c;
+        }
+
+        .logout-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            position: relative;
+            min-height: calc(100vh - 90px);
+            padding: 60px 40px;
+            background: url('bg.svg') no-repeat right center;
+            background-size: 80%;
+        }
+
+        .blue-curve {
+            display: none;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .left-content {
+            padding-right: 40px;
+        }
+
+        .main-heading {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .highlight-text {
+            color: #f39c12;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .search-section {
+            margin-bottom: 15px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .search-icon {
+            margin-left: 20px;
+            flex-shrink: 0;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 18px 16px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+            color: #2c3e50;
+        }
+
+        .search-input::placeholder {
+            color: #bdc3c7;
+        }
+
+        .search-btn {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: #e67e22;
+        }
+
+        .search-example {
+            font-size: 14px;
+            color: #95a5a6;
+            margin-top: 10px;
+            padding-left: 5px;
+        }
+
+        /* Search Results Styles */
+        .search-results {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .results-header h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .close-results {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #95a5a6;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-results:hover {
+            background: #f8f9fa;
+            color: #e74c3c;
+        }
+
+        .results-list {
+            padding: 10px 0;
+        }
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 24px;
+            border-bottom: 1px solid #f8f9fa;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .student-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid #e9ecef;
+        }
+
+        .student-info {
+            flex: 1;
+        }
+
+        .student-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .student-id {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .student-details {
+            text-align: right;
+        }
+
+        .student-program {
+            font-size: 14px;
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px 24px;
+            color: #7f8c8d;
+        }
+
+        .no-results-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .right-content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+        }
+
+        .illustration-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-illustration {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            object-fit: contain;
+            z-index: 5;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .modal-subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .role-cards-modal {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .role-card-modal {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            width: 150px;
+        }
+
+        .role-card-modal:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .role-card-modal.selected {
+            border-color: #3498db;
+            background: #f8f9ff;
+        }
+
+        .role-icon-modal {
+            margin-bottom: 15px;
+        }
+
+        .role-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .role-text-modal {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .role-card-modal.selected .role-text-modal {
+            color: #3498db;
+        }
+
+        .modal-actions {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .continue-modal-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .continue-modal-btn:hover:not(:disabled) {
+            background-color: #2980b9;
+        }
+
+        .continue-modal-btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .modal-footer {
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .signup-modal-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-modal-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .left-content {
+                padding-right: 0;
+            }
+
+            .blue-curve {
+                width: 100%;
+                height: 60%;
+                top: 40%;
+                border-radius: 200px 200px 0 0;
+            }
+
+            .main-heading {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-section {
+                gap: 20px;
+            }
+
+            .main-content {
+                padding: 40px 20px;
+            }
+
+            .main-heading {
+                font-size: 32px;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .search-btn {
+                padding: 15px;
+            }
+
+            .brand-title {
+                font-size: 20px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <img src="logo.png" alt="KVTC Logo" class="logo">
+            <div class="brand-text">
+                <div class="brand-title">Student Management System</div>
+                <div class="brand-subtitle">Manage. Track. Support.</div>
+            </div>
+        </div>
+        
+        <nav class="nav-section">
+            <a href="#" class="nav-link">Home</a>
+            <span class="role-indicator" id="roleDisplay">Role: Admin</span>
+            <button class="logout-btn" onclick="logout()">
+                <svg class="logout-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 17V14H9V10H16V7L21 12L16 17M14 2C15.11 2 16 2.9 16 4V6H14V4H5V20H14V18H16V20C16 21.1 15.11 22 14 22H5C3.9 22 3 21.1 3 20V4C3 2.9 3.9 2 5 2H14Z"/>
+                </svg>
+                Logout
+            </button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="blue-curve"></div>
+        
+        <div class="content-wrapper">
+            <div class="left-content">
+                <h1 class="main-heading">
+                    Manage <span class="highlight-text">Student Records</span> Easily
+                </h1>
+                
+                <p class="subtitle">
+                    Quickly search, track, and support student journeys in one place.
+                </p>
+                
+                <div class="search-section">
+                    <div class="search-container">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="#bdc3c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <input 
+                            type="text" 
+                            class="search-input" 
+                            placeholder="Enter student name or student ID"
+                            id="searchInput"
+                        >
+                        <button class="search-btn" onclick="searchStudent()">Find</button>
+                    </div>
+                    <div class="search-example">For example: Abdul Ghafoor</div>
+                    
+                    <!-- Search Results Section -->
+                    <div class="search-results" id="searchResults" style="display: none;">
+                        <div class="results-header">
+                            <h3>Search Results</h3>
+                            <button class="close-results" onclick="clearResults()">×</button>
+                        </div>
+                        <div class="results-list" id="resultsList">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="illustration-container">
+                    <img src="folder.svg" alt="Student Records Hero Illustration" class="hero-illustration">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Role Selection Modal -->
+    <div class="modal-overlay" id="roleModal" style="display: none;">
+        <div class="modal-container">
+            <div class="modal-content">
+                <h2 class="modal-title">Welcome to KVTC Student Management System</h2>
+                <p class="modal-subtitle">Please select your role to continue</p>
+                
+                <div class="role-cards-modal">
+                    <div class="role-card-modal" onclick="selectRoleModal('admin')">
+                        <div class="role-icon-modal">
+                            <img src="17.png" alt="Admin" class="role-image">
+                        </div>
+                        <span class="role-text-modal">Admin</span>
+                    </div>
+                    
+                    <div class="role-card-modal" onclick="selectRoleModal('staff')">
+                        <div class="role-icon-modal">
+                            <img src="16.png" alt="Staff" class="role-image">
+                        </div>
+                        <span class="role-text-modal">Staff</span>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="continue-modal-btn" id="continueModalBtn" onclick="proceedToLogin()" disabled>
+                        Continue to Login
+                    </button>
+                </div>
+                
+                <div class="modal-footer">
+                    <p>New user? <a href="signup.html" class="signup-modal-link">Create an account</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const supabase = window.supabase.createClient(
+            window.SUPABASE_CONFIG.url,
+            window.SUPABASE_CONFIG.anonKey
+        );
+
+        // Check authentication status
+        const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+        const userRole = localStorage.getItem('selectedRole');
+        const userEmail = localStorage.getItem('userEmail');
+
+        // Initialize page based on authentication
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!isAuthenticated) {
+                // Show role selection modal for unauthenticated users
+                showRoleSelectionModal();
+                // Disable search functionality
+                disableFeatures();
+            } else {
+                // Show authenticated user info
+                if (userRole) {
+                    document.getElementById('roleDisplay').textContent = `Role: ${userRole.charAt(0).toUpperCase() + userRole.slice(1)}`;
+                }
+                enableFeatures();
+            }
+        });
+
+        // Disable features for unauthenticated users
+        function disableFeatures() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.querySelector('.search-btn');
+            
+            searchInput.disabled = true;
+            searchInput.placeholder = 'Please login to search students';
+            searchBtn.disabled = true;
+            searchBtn.style.opacity = '0.5';
+            searchBtn.style.cursor = 'not-allowed';
+        }
+
+        // Enable features for authenticated users
+        function enableFeatures() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.querySelector('.search-btn');
+            
+            searchInput.disabled = false;
+            searchInput.placeholder = 'Enter student name or student ID';
+            searchBtn.disabled = false;
+            searchBtn.style.opacity = '1';
+            searchBtn.style.cursor = 'pointer';
+        }
+
+        // Search functionality
+        async function searchStudent() {
+            const searchTerm = document.getElementById('searchInput').value.trim();
+
+            if (searchTerm) {
+                // Query Supabase Students table by name only
+                let { data: students, error } = await supabase
+                    .from('Students')
+                    .select('*')
+                    .ilike('name', `%${searchTerm}%`);
+
+                if (error) {
+                    alert('Error fetching students: ' + error.message);
+                    return;
+                }
+
+                displaySearchResults(students || [], searchTerm);
+            } else {
+                alert('Please enter a student name to search');
+            }
+        }
+
+        // Display search results
+        function displaySearchResults(students, searchTerm) {
+            const resultsContainer = document.getElementById('searchResults');
+            const resultsList = document.getElementById('resultsList');
+            
+            // Clear previous results
+            resultsList.innerHTML = '';
+            
+            if (students.length > 0) {
+                students.forEach(student => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+                    resultItem.onclick = () => selectStudent(student);
+                    
+                    // Use profile_picture_url or fallback
+                    const avatarUrl = student.profile_picture_url || 'logo.png';
+
+                    resultItem.innerHTML = `
+                        <img src="${avatarUrl}" alt="${student.name}" class="student-avatar">
+                        <div class="student-info">
+                            <div class="student-name">${student.name}</div>
+                            <div class="student-id">ID: ${student.id}</div>
+                            <div class="student-id">Gender: ${student.gender || 'N/A'}</div>
+                        </div>
+                    `;
+                    
+                    resultsList.appendChild(resultItem);
+                });
+            } else {
+                resultsList.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">🔍</div>
+                        <div>No students found matching "${searchTerm}"</div>
+                        <div style="margin-top: 8px; font-size: 12px;">Try searching with a different name or ID</div>
+                    </div>
+                `;
+            }
+            
+            // Show results container
+            resultsContainer.style.display = 'block';
+        }
+
+        // Select a student
+        function selectStudent(student) {
+            alert(`Selected Student:\n\nName: ${student.name}\nID: ${student.id}\nProgram: ${student.program}\n\nThis would typically open the student's detailed profile.`);
+            console.log('Selected student:', student);
+            // Here you would typically navigate to student details page
+        }
+
+        // Clear search results
+        function clearResults() {
+            document.getElementById('searchResults').style.display = 'none';
+            document.getElementById('searchInput').value = '';
+        }
+
+        // Modal functions
+        let selectedModalRole = null;
+
+        function showRoleSelectionModal() {
+            document.getElementById('roleModal').style.display = 'flex';
+        }
+
+        function hideRoleSelectionModal() {
+            document.getElementById('roleModal').style.display = 'none';
+        }
+
+        function selectRoleModal(role) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.role-card-modal').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // Add selected class to clicked card
+            event.target.closest('.role-card-modal').classList.add('selected');
+            
+            selectedModalRole = role;
+            
+            // Enable continue button
+            document.getElementById('continueModalBtn').disabled = false;
+            
+            console.log('Selected role in modal:', role);
+        }
+
+        function proceedToLogin() {
+            if (selectedModalRole) {
+                // Store selected role
+                localStorage.setItem('selectedRole', selectedModalRole);
+                
+                // Hide modal and redirect to login
+                hideRoleSelectionModal();
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Enter key support for search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchStudent();
+            }
+        });
+
+        // Logout functionality
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                // Clear user data
+                localStorage.removeItem('selectedRole');
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('isAuthenticated');
+                
+                console.log('User logged out');
+                
+                // Reload the page to show role selection modal
+                window.location.reload();
+            }
+        }
+
+        // Simple animation for illustrations
+        document.addEventListener('DOMContentLoaded', function() {
+            const illustrations = document.querySelectorAll('.illustration-container img');
+            
+            illustrations.forEach((img, index) => {
+                img.style.opacity = '0';
+                img.style.transform += ' translateY(20px)';
+                img.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                setTimeout(() => {
+                    img.style.opacity = '1';
+                    img.style.transform = img.style.transform.replace('translateY(20px)', 'translateY(0)');
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html> 
