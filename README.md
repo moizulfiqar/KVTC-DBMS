@@ -31,10 +31,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## To Push on Github
 git clone https://github.com/your-friend-username/project.git
+
 cd project
-#make changes
+
 git add .
+
 git commit -m "my changes"
+
 git push
 
 ## Deploy on Vercel
