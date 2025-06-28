@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Back - Login</title>
+    <title>Create an Account - Sign Up</title>
     <!-- Supabase CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="config.js"></script>
@@ -24,7 +24,7 @@
             padding: 20px;
         }
 
-        .login-container {
+        .signup-container {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -34,7 +34,7 @@
             text-align: center;
         }
 
-        .login-title {
+        .signup-title {
             font-size: 32px;
             font-weight: 600;
             color: #2c3e50;
@@ -65,12 +65,12 @@
         }
 
         .form-input:focus {
-            border-color: #3498db;
+            border-color: #f39c12;
         }
 
-        .sign-in-btn {
+        .sign-up-btn {
             width: 100%;
-            background-color: #3498db;
+            background-color: #f39c12;
             color: white;
             border: none;
             padding: 14px 24px;
@@ -82,11 +82,11 @@
             margin-bottom: 20px;
         }
 
-        .sign-in-btn:hover {
-            background-color: #2980b9;
+        .sign-up-btn:hover {
+            background-color: #e67e22;
         }
 
-        .sign-in-btn:disabled {
+        .sign-up-btn:disabled {
             background-color: #ccc;
             cursor: not-allowed;
         }
@@ -97,59 +97,30 @@
             margin-bottom: 20px;
         }
 
-        .signup-text {
+        .signin-text {
             color: #666;
             font-size: 16px;
-            margin-bottom: 40px;
         }
 
-        .signup-link {
-            color: #3498db;
+        .signin-link {
+            color: #f39c12;
             text-decoration: none;
             font-weight: 600;
         }
 
-        .signup-link:hover {
+        .signin-link:hover {
             text-decoration: underline;
-        }
-
-        .continue-btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 14px 40px;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        .continue-btn:hover {
-            background-color: #2980b9;
-        }
-
-        .progress-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .progress-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #ddd;
-            transition: background-color 0.3s ease;
-        }
-
-        .progress-dot.active {
-            background-color: #3498db;
         }
 
         .error-message {
             color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            color: #27ae60;
             font-size: 14px;
             margin-top: 5px;
             display: none;
@@ -162,22 +133,22 @@
         }
 
         @media (max-width: 480px) {
-            .login-container {
+            .signup-container {
                 padding: 30px 20px;
                 margin: 10px;
             }
 
-            .login-title {
+            .signup-title {
                 font-size: 28px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1 class="login-title">Welcome Back!</h1>
+    <div class="signup-container">
+        <h1 class="signup-title">Create an Account</h1>
         
-        <form id="loginForm">
+        <form id="signupForm">
             <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" id="email" name="email" class="form-input" required>
@@ -190,24 +161,23 @@
                 <div class="error-message" id="passwordError"></div>
             </div>
             
-            <button type="submit" class="sign-in-btn" id="loginBtn">
-                <span id="btnText">Sign In</span>
-                <span id="loadingText" class="loading">Signing in...</span>
+            <div class="form-group">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required>
+                <div class="error-message" id="confirmPasswordError"></div>
+            </div>
+            
+            <button type="submit" class="sign-up-btn" id="signupBtn">
+                <span id="btnText">Sign Up</span>
+                <span id="loadingText" class="loading">Creating account...</span>
             </button>
         </form>
         
         <div class="divider">or</div>
         
-        <p class="signup-text">
-            Don't have an account? <a href="signup.html" class="signup-link">Sign Up</a>
+        <p class="signin-text">
+            Already have an account? <a href="login.html" class="signin-link">Sign In</a>
         </p>
-        
-        <button class="continue-btn" onclick="continuePage()">Continue</button>
-        
-        <div class="progress-dots">
-            <div class="progress-dot"></div>
-            <div class="progress-dot active"></div>
-        </div>
     </div>
 
     <script>
@@ -227,11 +197,12 @@
             window.location.href = 'role-selection.html';
         }
 
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
             
             // Clear previous error messages
             document.querySelectorAll('.error-message').forEach(msg => {
@@ -239,7 +210,36 @@
                 msg.textContent = '';
             });
             
-            if (email && password) {
+            let isValid = true;
+            
+            // Validate email
+            if (!email) {
+                showError('emailError', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('emailError', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate password
+            if (!password) {
+                showError('passwordError', 'Password is required');
+                isValid = false;
+            } else if (password.length < 6) {
+                showError('passwordError', 'Password must be at least 6 characters long');
+                isValid = false;
+            }
+            
+            // Validate confirm password
+            if (!confirmPassword) {
+                showError('confirmPasswordError', 'Please confirm your password');
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                showError('confirmPasswordError', 'Passwords do not match');
+                isValid = false;
+            }
+            
+            if (isValid) {
                 // Check if role is selected
                 if (!selectedRole) {
                     showError('emailError', 'Please select a role first. Redirecting to role selection...');
@@ -255,25 +255,23 @@
                     return;
                 }
                 
-                await handleLogin(email, password);
-            } else {
-                showError('emailError', 'Please fill in all fields');
+                await handleSignup(email, password, selectedRole);
             }
         });
 
-        async function handleLogin(email, password) {
-            const loginBtn = document.getElementById('loginBtn');
+        async function handleSignup(email, password, role) {
+            const signupBtn = document.getElementById('signupBtn');
             const btnText = document.getElementById('btnText');
             const loadingText = document.getElementById('loadingText');
             
             // Show loading state
-            loginBtn.disabled = true;
+            signupBtn.disabled = true;
             btnText.style.display = 'none';
             loadingText.style.display = 'inline';
             
             try {
-                // Sign in with Supabase
-                const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+                // Step 1: Create user in Supabase Auth
+                const { data: authData, error: authError } = await supabase.auth.signUp({
                     email: email,
                     password: password
                 });
@@ -282,38 +280,43 @@
                     throw new Error(authError.message);
                 }
 
-                if (authData.user) {
-                    // Get user profile from User table
-                    const { data: userProfile, error: profileError } = await supabase
+                if (user) {
+                    // Step 2: Insert user data into the User table
+                    const { error: profileError } = await supabase
                         .from('User')
-                        .select('*')
-                        .eq('id', authData.user.id)
-                        .single();
+                        .insert([
+                            {
+                                id: user.id,
+                                role: role, // Use the selected role
+                                created_at: new Date().toISOString()
+                            }
+                        ]);
 
                     if (profileError) {
-                        console.error('Error fetching user profile:', profileError);
+                        console.error('Error creating user profile:', profileError);
+                        // Note: The auth user was created but profile failed
+                        // You might want to handle this case differently
                     }
 
                     // Success!
-                    const userRole = userProfile?.role || selectedRole || 'unknown';
-                    alert(`Login successful!\nWelcome ${email}\nRole: ${userRole}`);
+                    alert(`Account created successfully!\nRole: ${role}\nEmail: ${email}\nPlease check your email to verify your account.`);
                     
                     // Store user data locally
                     localStorage.setItem('userEmail', email);
                     localStorage.setItem('userId', authData.user.id);
-                    localStorage.setItem('userRole', userRole);
+                    localStorage.setItem('userRole', role);
                     localStorage.setItem('isAuthenticated', 'true');
                     
-                    // Redirect to home page
+                    // Redirect to home page after successful signup
                     window.location.href = 'home.html';
                 }
                 
             } catch (error) {
-                console.error('Login error:', error);
-                showError('emailError', error.message || 'Invalid email or password. Please try again.');
+                console.error('Signup error:', error);
+                showError('emailError', error.message || 'An error occurred during signup. Please try again.');
                 
                 // Reset button state
-                loginBtn.disabled = false;
+                signupBtn.disabled = false;
                 btnText.style.display = 'inline';
                 loadingText.style.display = 'none';
             }
@@ -325,20 +328,19 @@
             errorElement.style.display = 'block';
         }
 
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
         function isValidRole(role) {
             return role === 'admin' || role === 'staff';
         }
 
-        function continuePage() {
-            console.log('Continue button clicked');
-            alert('Continue to next page');
-            // Here you would navigate to the next page
-        }
-
-        // Handle sign up link
-        document.querySelector('.signup-link').addEventListener('click', function(e) {
-            console.log('Sign up link clicked');
-            // Link will navigate naturally to signup.html
+        // Handle sign in link
+        document.querySelector('.signin-link').addEventListener('click', function(e) {
+            console.log('Sign in link clicked');
+            // Link will navigate naturally to login.html
         });
     </script>
 </body>
