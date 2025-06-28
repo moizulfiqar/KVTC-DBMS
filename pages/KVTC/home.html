@@ -743,7 +743,7 @@
                     resultItem.onclick = () => selectStudent(student);
                     
                     // Use profile_picture_url or fallback
-                    const avatarUrl = student.profile_picture_url || 'logo.png';
+                    const avatarUrl = student.profile_picture_url || 'no pfp.jpeg';
 
                     resultItem.innerHTML = `
                         <img src="${avatarUrl}" alt="${student.name}" class="student-avatar">
