@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Back - Login</title>
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #3498db;
+        }
+
+        .sign-in-btn {
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .sign-in-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .sign-in-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .divider {
+            color: #999;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .signup-text {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .signup-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+
+        .continue-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .continue-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ddd;
+            transition: background-color 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background-color: #3498db;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            .login-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="login-title">Welcome Back!</h1>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+                <div class="error-message" id="emailError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-input" required>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+            
+            <button type="submit" class="sign-in-btn" id="loginBtn">
+                <span id="btnText">Sign In</span>
+                <span id="loadingText" class="loading">Signing in...</span>
+            </button>
+        </form>
+        
+        <div class="divider">or</div>
+        
+        <p class="signup-text">
+            Don't have an account? <a href="signup.html" class="signup-link">Sign Up</a>
+        </p>
+        
+        <button class="continue-btn" onclick="continuePage()">Continue</button>
+        
+        <div class="progress-dots">
+            <div class="progress-dot"></div>
+            <div class="progress-dot active"></div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Supabase client
+        const supabase = window.supabase.createClient(
+            window.SUPABASE_CONFIG.url, 
+            window.SUPABASE_CONFIG.anonKey
+        );
+
+        // Get the selected role from localStorage
+        const selectedRole = localStorage.getItem('selectedRole');
+        if (selectedRole) {
+            console.log('User selected role:', selectedRole);
+        } else {
+            console.log('No role selected, redirecting to role selection');
+            // Redirect to role selection if no role is selected
+            window.location.href = 'role-selection.html';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Clear previous error messages
+            document.querySelectorAll('.error-message').forEach(msg => {
+                msg.style.display = 'none';
+                msg.textContent = '';
+            });
+            
+            if (email && password) {
+                // Check if role is selected
+                if (!selectedRole) {
+                    showError('emailError', 'Please select a role first. Redirecting to role selection...');
+                    setTimeout(() => {
+                        window.location.href = 'role-selection.html';
+                    }, 2000);
+                    return;
+                }
+                
+                // Validate role
+                if (!isValidRole(selectedRole)) {
+                    showError('emailError', 'Invalid role selected. Please select a valid role.');
+                    return;
+                }
+                
+                await handleLogin(email, password);
+            } else {
+                showError('emailError', 'Please fill in all fields');
+            }
+        });
+
+        async function handleLogin(email, password) {
+            const loginBtn = document.getElementById('loginBtn');
+            const btnText = document.getElementById('btnText');
+            const loadingText = document.getElementById('loadingText');
+            
+            // Show loading state
+            loginBtn.disabled = true;
+            btnText.style.display = 'none';
+            loadingText.style.display = 'inline';
+            
+            try {
+                // Sign in with Supabase
+                const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+
+                if (authError) {
+                    throw new Error(authError.message);
+                }
+
+                if (authData.user) {
+                    // Get user profile from User table
+                    const { data: userProfile, error: profileError } = await supabase
+                        .from('User')
+                        .select('*')
+                        .eq('id', authData.user.id)
+                        .single();
+
+                    if (profileError) {
+                        console.error('Error fetching user profile:', profileError);
+                    }
+
+                    // Success!
+                    const userRole = userProfile?.role || selectedRole || 'unknown';
+                    alert(`Login successful!\nWelcome ${email}\nRole: ${userRole}`);
+                    
+                    // Store user data locally
+                    localStorage.setItem('userEmail', email);
+                    localStorage.setItem('userId', authData.user.id);
+                    localStorage.setItem('userRole', userRole);
+                    localStorage.setItem('isAuthenticated', 'true');
+                    
+                    // Redirect to home page
+                    window.location.href = 'home.html';
+                }
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                showError('emailError', error.message || 'Invalid email or password. Please try again.');
+                
+                // Reset button state
+                loginBtn.disabled = false;
+                btnText.style.display = 'inline';
+                loadingText.style.display = 'none';
+            }
+        }
+
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function isValidRole(role) {
+            return role === 'admin' || role === 'staff';
+        }
+
+        function continuePage() {
+            console.log('Continue button clicked');
+            alert('Continue to next page');
+            // Here you would navigate to the next page
+        }
+
+        // Handle sign up link
+        document.querySelector('.signup-link').addEventListener('click', function(e) {
+            console.log('Sign up link clicked');
+            // Link will navigate naturally to signup.html
+        });
+    </script>
+</body>
+</html> 
