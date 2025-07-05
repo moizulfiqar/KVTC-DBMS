@@ -270,10 +270,15 @@
             loadingText.style.display = 'inline';
             
             try {
-                // Step 1: Create user in Supabase Auth
+                // Step 1: Create user in Supabase Auth with role metadata
                 const { data: authData, error: authError } = await supabase.auth.signUp({
                     email: email,
-                    password: password
+                    password: password,
+                    options: {
+                        data: {
+                            role: role
+                        }
+                    }
                 });
 
                 if (authError) {
@@ -281,22 +286,42 @@
                 }
 
                 if (authData.user) {
+                    console.log('User created in auth, now creating profile...');
+                    console.log('User ID:', authData.user.id);
+                    console.log('Selected role:', role);
+                    console.log('Auth data:', authData);
+                    
+                    // Wait a moment for authentication to fully process
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    
+                    // Check current session before inserting
+                    const { data: session, error: sessionError } = await supabase.auth.getSession();
+                    console.log('Current session:', session);
+                    console.log('Session error:', sessionError);
+                    
                     // Step 2: Insert user data into the User table
-                    const { error: profileError } = await supabase
+                    console.log('Attempting to insert profile...');
+                    const { data: profileData, error: profileError } = await supabase
                         .from('User')
                         .insert([
                             {
                                 id: authData.user.id,
-                                role: role, // Use the selected role
-                                created_at: new Date().toISOString()
+                                role: role
                             }
-                        ]);
+                        ])
+                        .select();
 
                     if (profileError) {
                         console.error('Error creating user profile:', profileError);
-                        // Note: The auth user was created but profile failed
-                        // You might want to handle this case differently
+                        console.error('Profile error details:', JSON.stringify(profileError, null, 2));
+                        console.error('Error code:', profileError.code);
+                        console.error('Error hint:', profileError.hint);
+                        
+                        // This is a critical error - profile creation failed
+                        throw new Error(`Failed to create user profile: ${profileError.message}. Please try again or contact support.`);
                     }
+
+                    console.log('User profile created successfully:', profileData);
 
                     // Success!
                     alert(`Account created successfully!\nRole: ${role}\nEmail: ${email}\nPlease check your email to verify your account.`);
@@ -307,8 +332,16 @@
                     localStorage.setItem('userRole', role);
                     localStorage.setItem('isAuthenticated', 'true');
                     
-                    // Redirect to home page after successful signup
-                    window.location.href = 'home.html';
+                    // Redirect to appropriate dashboard based on role after successful signup
+                    if (role === 'admin') {
+                        window.location.href = 'admin-dashboard.html';
+                    } else if (role === 'staff') {
+                        window.location.href = 'staff-dashboard.html';
+                    } 
+                    // else {
+                    //     // Fallback to home.html for any other roles
+                    //     window.location.href = 'home.html';
+                    // }
                 }
                 
             } catch (error) {

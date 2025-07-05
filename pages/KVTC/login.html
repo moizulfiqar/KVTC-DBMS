@@ -292,20 +292,38 @@
 
                     if (profileError) {
                         console.error('Error fetching user profile:', profileError);
+                        throw new Error('Error retrieving user profile. Please try again.');
                     }
 
-                    // Success!
-                    const userRole = userProfile?.role || selectedRole || 'unknown';
-                    alert(`Login successful!\nWelcome ${email}\nRole: ${userRole}`);
+                    if (!userProfile) {
+                        throw new Error('User profile not found. Please contact administrator.');
+                    }
+
+                    // SECURITY CHECK: Validate that selected role matches stored role
+                    const actualRole = userProfile.role;
+                    if (selectedRole !== actualRole) {
+                        throw new Error(`Access denied. You are registered as ${actualRole}, but selected ${selectedRole}. Please select the correct role.`);
+                    }
+
+                    // Success! User's selected role matches their stored role
+                    alert(`Login successful!\nWelcome ${email}\nRole: ${actualRole}`);
                     
-                    // Store user data locally
+                    // Store user data locally (use actual role from database)
                     localStorage.setItem('userEmail', email);
                     localStorage.setItem('userId', authData.user.id);
-                    localStorage.setItem('userRole', userRole);
+                    localStorage.setItem('userRole', actualRole);
                     localStorage.setItem('isAuthenticated', 'true');
                     
-                    // Redirect to home page
-                    window.location.href = 'home.html';
+                    // Redirect to appropriate dashboard based on role
+                    if (actualRole === 'admin') {
+                        window.location.href = 'admin-dashboard.html';
+                    } else if (actualRole === 'staff') {
+                        window.location.href = 'staff-dashboard.html';
+                    } 
+                    // else {
+                    //     // Fallback to home.html for any other roles
+                    //     window.location.href = 'home.html';
+                    // }
                 }
                 
             } catch (error) {
