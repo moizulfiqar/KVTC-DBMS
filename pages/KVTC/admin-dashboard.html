@@ -2800,14 +2800,6 @@
             // Populate form with current student data
             document.getElementById('editName').value = currentEditingStudent.name || '';
             document.getElementById('editGender').value = currentEditingStudent.gender || '';
-            // document.getElementById('editBloodGroup').value = currentEditingStudent.blood_group || '';
-            // document.getElementById('editDateOfBirth').value = currentEditingStudent.date_of_birth || '';
-            // document.getElementById('editPhoneNumber').value = currentEditingStudent.phone_number || '';
-            // document.getElementById('editAddress').value = currentEditingStudent.address || '';
-            // document.getElementById('editGuardianName').value = currentEditingStudent.guardian_name || '';
-            // document.getElementById('editGuardianPhone').value = currentEditingStudent.guardian_phone || '';
-            // document.getElementById('editEmergencyContact').value = currentEditingStudent.emergency_contact || '';
-            // document.getElementById('editMedicalConditions').value = currentEditingStudent.medical_conditions || '';
             
             // Reset file inputs and report fields
             document.getElementById('editProfilePicture').value = '';
@@ -2917,46 +2909,14 @@
                 const studentUpdates = {};
                 
                 const genderValue = document.getElementById('editGender').value;
-                // const bloodGroupValue = document.getElementById('editBloodGroup').value;
-                // const dateOfBirthValue = document.getElementById('editDateOfBirth').value;
-                // const phoneNumberValue = document.getElementById('editPhoneNumber').value;
-                // const addressValue = document.getElementById('editAddress').value;
-                // const guardianNameValue = document.getElementById('editGuardianName').value;
-                // const guardianPhoneValue = document.getElementById('editGuardianPhone').value;
-                // const emergencyContactValue = document.getElementById('editEmergencyContact').value;
-                // const medicalConditionsValue = document.getElementById('editMedicalConditions').value;
                 
                 // Only add fields that have values and are different from current
-                // if (nameValue && nameValue !== currentEditingStudent.name) {
-                //     studentUpdates.name = nameValue;
-                // }
-                // if (genderValue && genderValue !== currentEditingStudent.gender) {
-                //     studentUpdates.gender = genderValue;
-                // }
-                // if (bloodGroupValue && bloodGroupValue !== currentEditingStudent.blood_group) {
-                //     studentUpdates.blood_group = bloodGroupValue;
-                // }
-                // if (dateOfBirthValue && dateOfBirthValue !== currentEditingStudent.date_of_birth) {
-                //     studentUpdates.date_of_birth = dateOfBirthValue;
-                // }
-                // if (phoneNumberValue && phoneNumberValue !== currentEditingStudent.phone_number) {
-                //     studentUpdates.phone_number = phoneNumberValue;
-                // }
-                // if (addressValue && addressValue !== currentEditingStudent.address) {
-                //     studentUpdates.address = addressValue;
-                // }
-                // if (guardianNameValue && guardianNameValue !== currentEditingStudent.guardian_name) {
-                //     studentUpdates.guardian_name = guardianNameValue;
-                // }
-                // if (guardianPhoneValue && guardianPhoneValue !== currentEditingStudent.guardian_phone) {
-                //     studentUpdates.guardian_phone = guardianPhoneValue;
-                // }
-                // if (emergencyContactValue && emergencyContactValue !== currentEditingStudent.emergency_contact) {
-                //     studentUpdates.emergency_contact = emergencyContactValue;
-                // }
-                // if (medicalConditionsValue && medicalConditionsValue !== currentEditingStudent.medical_conditions) {
-                //     studentUpdates.medical_conditions = medicalConditionsValue;
-                // }
+                if (nameValue && nameValue !== currentEditingStudent.name) {
+                    studentUpdates.name = nameValue;
+                }
+                if (genderValue && genderValue !== currentEditingStudent.gender) {
+                    studentUpdates.gender = genderValue;
+                }
                 
                 // Handle profile picture upload
                 const profilePictureInput = document.getElementById('editProfilePicture');
