@@ -1428,7 +1428,7 @@
                             <p><strong>Version:</strong> ${version}</p>
                         </div>
                         ${comments !== 'No comments' ? `<div class="report-comments">${comments}</div>` : ''}
-                        <a href="${report.file_url}" target="_blank" class="view-report-btn">View Report</a>
+                        <button onclick="openReportFile('${report.file_url}', '${reportType}')" class="view-report-btn">View Report</button>
                     `;
 
                     reportsGrid.appendChild(reportCard);
@@ -1452,6 +1452,47 @@
         function clearResults() {
             document.getElementById('searchResults').style.display = 'none';
             document.getElementById('searchInput').value = '';
+        }
+
+        // Function to open report files (handles both URLs and data URLs)
+        function openReportFile(fileUrl, reportType) {
+            try {
+                console.log('Opening report file:', reportType, 'URL type:', fileUrl.startsWith('data:') ? 'Data URL' : 'Regular URL');
+                
+                if (fileUrl.startsWith('data:')) {
+                    // Handle data URL - create a temporary link and click it
+                    const link = document.createElement('a');
+                    link.href = fileUrl;
+                    
+                    // Extract file extension from data URL
+                    let fileExtension = 'pdf'; // default
+                    if (fileUrl.includes('data:application/pdf')) {
+                        fileExtension = 'pdf';
+                    } else if (fileUrl.includes('data:application/msword')) {
+                        fileExtension = 'doc';
+                    } else if (fileUrl.includes('data:application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
+                        fileExtension = 'docx';
+                    }
+                    
+                    // Set download filename
+                    link.download = `${reportType}_report.${fileExtension}`;
+                    link.target = '_blank';
+                    
+                    // Temporarily add to DOM, click, then remove
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    console.log('Data URL file opened successfully');
+                } else {
+                    // Handle regular URL
+                    window.open(fileUrl, '_blank');
+                    console.log('Regular URL opened successfully');
+                }
+            } catch (error) {
+                console.error('Error opening report file:', error);
+                alert('Error opening report file. Please try again or contact support.');
+            }
         }
 
         // Modal functions

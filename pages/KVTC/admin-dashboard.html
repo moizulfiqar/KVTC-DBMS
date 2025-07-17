@@ -882,11 +882,19 @@
         }
 
         .stat-card.female {
-            border-left-color: #FCC714;
+            border-left-color: #082C48;
         }
 
         .stat-card.male {
             border-left-color: #1493D4;
+        }
+
+        .stat-card.staff {
+            border-left-color: #A9D9E9;
+        }
+
+        .stat-card.missing {
+            border-left-color: #04547C;
         }
 
         .stat-number {
@@ -983,6 +991,196 @@
             color: #bdc3c7;
         }
 
+        /* Admin Action Buttons */
+        .admin-actions {
+            border-top: 2px solid #eee;
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-radius: 0 0 16px 16px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .admin-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .edit-btn {
+            background: #3498db;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background: #2980b9;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        .admin-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Edit Modal Styles */
+        .edit-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1002;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .edit-modal-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .edit-modal-header {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .edit-modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .edit-modal-content {
+            padding: 30px;
+        }
+
+        .edit-form-group {
+            margin-bottom: 20px;
+        }
+
+        .edit-form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .edit-form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .edit-form-input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .edit-form-file {
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed #bdc3c7;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .edit-form-file:hover {
+            border-color: #3498db;
+        }
+
+        .edit-modal-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .save-btn {
+            background: #27ae60;
+            color: white;
+        }
+
+        .save-btn:hover {
+            background: #229954;
+        }
+
+        .cancel-btn {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .cancel-btn:hover {
+            background: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .admin-actions {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .admin-btn {
+                min-width: auto;
+            }
+
+            .edit-modal-container {
+                margin: 10px;
+                max-height: 95vh;
+            }
+
+            .edit-modal-content {
+                padding: 20px;
+            }
+        }
+
         /* Footer Styles */
         .footer {
             background-color: #80C2F2;
@@ -1003,6 +1201,440 @@
             .footer {
                 padding: 15px 20px;
                 font-size: 12px;
+            }
+        }
+
+        /* Add Student Section Styles */
+        .add-student-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 40px;
+            border-radius: 16px;
+            margin: 100px auto;
+            max-width: 1200px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .add-student-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .add-student-content {
+            padding-right: 20px;
+        }
+
+        .add-student-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .add-student-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .add-student-features {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:nth-child(2) .feature-icon {
+            background: linear-gradient(135deg, #F7BF0E 0%, #EDBB1C 100%);
+            box-shadow: 0 4px 15px rgba(247, 191, 14, 0.3);
+        }
+
+        .feature-item:nth-child(3) .feature-icon {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .feature-icon:hover {
+            transform: translateY(-2px);
+        }
+
+        .feature-item span {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .add-student-btn {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .add-student-btn:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #1f5f8b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .add-student-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .visual-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 350px;
+            width: 100%;
+            border: 1px solid #e9ecef;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f8f9fa;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .card-status {
+            font-size: 12px;
+            font-weight: 600;
+            color: #27ae60;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(39, 174, 96, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-preview {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .preview-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .field-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .field-placeholder {
+            height: 12px;
+            background: linear-gradient(90deg, #e9ecef 0%, #f8f9fa 50%, #e9ecef 100%);
+            border-radius: 6px;
+            animation: shimmer 1.5s infinite;
+        }
+
+        .field-placeholder.short {
+            width: 60%;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+
+        .card-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f8f9fa;
+        }
+
+        .submit-preview {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Design for Add Student Section */
+        @media (max-width: 1024px) {
+            .add-student-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .add-student-content {
+                padding-right: 0;
+            }
+
+            .add-student-features {
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .add-student-section {
+                padding: 40px 20px;
+                margin: 20px auto;
+            }
+
+            .add-student-title {
+                font-size: 28px;
+            }
+
+            .add-student-subtitle {
+                font-size: 16px;
+            }
+
+            .add-student-features {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .visual-card {
+                padding: 20px;
+            }
+        }
+
+        /* Loading state for stats */
+        .stat-loading {
+            font-size: 32px;
+            color: #bdc3c7;
+        }
+
+        /* Detailed Statistics Sections */
+        .detailed-stats-section {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .activity-logs-section,
+        .missing-reports-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid #F4A404;
+        }
+
+        .missing-reports-section {
+            border-left-color: #FBD405;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .activity-logs-container,
+        .missing-reports-container {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .activity-log-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #dee2e6;
+            transition: background-color 0.3s ease;
+        }
+
+        .activity-log-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-log-item:hover {
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 6px;
+            padding: 12px 10px;
+        }
+
+        .activity-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 12px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .activity-icon.upload {
+            background: #FCBC44;
+        }
+
+        .activity-icon.edit {
+            background: #f39c12;
+        }
+
+        .activity-icon.delete {
+            background: #e74c3c;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-action {
+            font-size: 14px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 2px;
+        }
+
+        .activity-details {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+        .activity-time {
+            font-size: 11px;
+            color: #95a5a6;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .missing-report-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #dee2e6;
+            transition: background-color 0.3s ease;
+        }
+
+        .missing-report-item:last-child {
+            border-bottom: none;
+        }
+
+        .missing-report-item:hover {
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 6px;
+            padding: 12px 10px;
+        }
+
+        .missing-report-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 12px;
+            border: 2px solid #FBD405;
+        }
+
+        .missing-report-info {
+            flex: 1;
+        }
+
+        .missing-report-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 2px;
+        }
+
+        .missing-report-id {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+        .missing-report-count {
+            font-size: 11px;
+            color: #e74c3c;
+            font-weight: 600;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .no-activity,
+        .no-missing-reports {
+            text-align: center;
+            padding: 30px 20px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        /* Responsive Design for Detailed Stats */
+        @media (max-width: 768px) {
+            .detailed-stats-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .activity-logs-section,
+            .missing-reports-section {
+                padding: 20px;
             }
         }
     </style>
@@ -1080,14 +1712,84 @@
         </div>
     </main>
 
-    <section>
-        <h3 class="statistics-title">Dummy Section (Add Student section)</h3>
-
+    <section class="add-student-section">
+        <div class="add-student-container">
+            <div class="add-student-content">
+                <h2 class="add-student-title">Student <span class="highlight-text">Enrollment </span>Form</h2>
+                <p class="add-student-subtitle">
+                    Quickly register new students and manage their records with ease in the KVTC system.
+                </p>
+                
+                <!-- <div class="add-student-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L12 2L3 7V9C3 14.55 6.84 19.74 12 21C17.16 19.74 21 14.55 21 9Z" fill="#3498db"/>
+                            </svg>
+                        </div>
+                        <span>Secure Registration</span>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 11H7V9H9V11ZM13 11H11V9H13V11ZM17 11H15V9H17V11ZM19 4H18V2H16V4H8V2H6V4H5C3.89 4 3.01 4.9 3.01 6L3 20C3 21.1 3.89 22 5 22H19C20.1 22 21 21.1 21 20V6C21 4.9 20.1 4 19 4ZM19 20H5V9H19V20Z" fill="#F7BF0E"/>
+                            </svg>
+                        </div>
+                        <span>Instant Processing</span>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6L9 17L4 12L5.41 10.59L9 14.17L18.59 4.59L20 6Z" fill="#27ae60"/>
+                            </svg>
+                        </div>
+                        <span>Data Validation</span>
+                    </div>
+                </div> -->
+                
+                <button class="add-student-btn" onclick="openAddStudentModal()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                    </svg>
+                    Start Registration
+                </button>
+            </div>
+            
+            <div class="add-student-visual">
+                <div class="visual-card">
+                    <div class="card-header">
+                        <div class="card-title">Student Registration</div>
+                        <div class="card-status">Ready</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-preview">
+                            <div class="preview-field">
+                                <div class="field-label">Full Name</div>
+                                <div class="field-placeholder"></div>
+                            </div>
+                            <div class="preview-field">
+                                <div class="field-label">Gender</div>
+                                <div class="field-placeholder short"></div>
+                            </div>
+                            <div class="preview-field">
+                                <div class="field-label">Profile Picture</div>
+                                <div class="field-placeholder short"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="submit-preview">Submit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     
     <!-- Statistics Section -->
     <section class="statistics-section" style="max-width: 1200px; margin: 100px auto 0 auto; padding: 40px 40px 30px 40px;">
-        <h3 class="statistics-title">Dashboard Statistics</h3>
+        <h3 class="statistics-title">Admin Dashboard Statistics</h3>
         
         <div class="stats-grid">
             <div class="stat-card">
@@ -1095,21 +1797,6 @@
                     <span class="stat-loading">...</span>
                 </span>
                 <span class="stat-label">Total Students</span>
-            </div>
-            
-            <div class="stat-card reports">
-                <span class="stat-number" id="totalReports">
-                    <span class="stat-loading">...</span>
-                </span>
-                <span class="stat-label">Total Reports</span>
-            </div>
-            
-
-            <div class="stat-card female">
-                <span class="stat-number" id="totalFemaleStudents">
-                    <span class="stat-loading">...</span>
-                </span>
-                <span class="stat-label">Female Students</span>
             </div>
 
             <div class="stat-card male">
@@ -1119,11 +1806,57 @@
                 <span class="stat-label">Male Students</span>
             </div>
 
-            <div class="stat-card recent">
-                <span class="stat-number" id="recentlyViewedCount">
+            <div class="stat-card female">
+                <span class="stat-number" id="totalFemaleStudents">
                     <span class="stat-loading">...</span>
                 </span>
-                <span class="stat-label">Recently Viewed</span>
+                <span class="stat-label">Female Students</span>
+            </div>
+            
+            <div class="stat-card reports">
+                <span class="stat-number" id="totalReports">
+                    <span class="stat-loading">...</span>
+                </span>
+                <span class="stat-label">Total Reports Uploaded</span>
+            </div>
+            
+            <div class="stat-card staff">
+                <span class="stat-number" id="totalStaff">
+                    <span class="stat-loading">...</span>
+                </span>
+                <span class="stat-label">Total Staff Accounts</span>
+            </div>
+
+            
+            <div class="stat-card missing">
+                <span class="stat-number" id="studentsMissingReports">
+                    <span class="stat-loading">...</span>
+                </span>
+                <span class="stat-label">Students Missing Reports</span>
+            </div>
+        </div>
+
+        <div class="detailed-stats-section">
+            <!-- Activity Logs Section -->
+            <div class="activity-logs-section">
+                <h4 class="section-title">Recent Activity Logs</h4>
+                <div class="activity-logs-container" id="activityLogsContainer">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Loading activity logs...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Students Missing Reports Section -->
+            <div class="missing-reports-section">
+                <h4 class="section-title">Students Missing Reports</h4>
+                <div class="missing-reports-container" id="missingReportsContainer">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Loading students with missing reports...</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1203,6 +1936,159 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Admin Actions (Only visible for admin role) -->
+                <div class="admin-actions" id="adminActions">
+                    <button class="admin-btn edit-btn" onclick="openEditModal()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                        </svg>
+                        Edit
+                    </button>
+                    <button class="admin-btn delete-btn" onclick="deleteStudent()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                        </svg>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Student Modal -->
+    <div class="edit-modal" id="editModal">
+        <div class="edit-modal-container">
+            <div class="edit-modal-header">
+                <h3 class="edit-modal-title">Edit Student Information</h3>
+                <button class="close-detail-modal" onclick="closeEditModal()">&times;</button>
+            </div>
+            <div class="edit-modal-content">
+                <form id="editStudentForm">
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="editName">Full Name</label>
+                        <input type="text" id="editName" class="edit-form-input" required>
+                    </div>
+                    
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="editGender">Gender</label>
+                        <select id="editGender" class="edit-form-input" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    
+                    
+                    <!-- <div class="edit-form-group">
+                        <label class="edit-form-label" for="editProgram">Program</label>
+                        <input type="text" id="editProgram" class="edit-form-input">
+                    </div> -->
+                    
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="editProfilePicture">Profile Picture</label>
+                        <input type="file" id="editProfilePicture" class="edit-form-file" accept="image/*">
+                        <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">
+                            Upload a new profile picture (optional)
+                        </div>
+                    </div>
+                    
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="editReportType">Upload New Report</label>
+                        <select id="editReportType" class="edit-form-input">
+                            <option value="">Select Report Type</option>
+                            <option value="mtr">MTR - Mid Term Report</option>
+                            <option value="pdr">PDR - Performance Development Report</option>
+                            <option value="ttb">TTB - Trade Testing Board</option>
+                            <option value="ftr">FTR - Final Term Report</option>
+                        </select>
+                    </div>
+                    
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="editReportFile">Report File</label>
+                        <input type="file" id="editReportFile" class="edit-form-file" accept=".pdf,.doc,.docx">
+                        <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">
+                            Upload PDF, DOC, or DOCX files only (optional)
+                        </div>
+                    </div>
+                    
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="editReportComments">Uploader's Name and Comments</label>
+                        <textarea id="editReportComments" class="edit-form-input" rows="3" 
+                                  placeholder="Start by writing your name. Example: Uploaded by Breeha. You can also add any additional comments here."></textarea>
+                    </div>
+                    
+                    <div class="edit-modal-actions">
+                        <button type="button" class="admin-btn cancel-btn" onclick="closeEditModal()">Cancel</button>
+                        <button type="submit" class="admin-btn save-btn">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Student Modal -->
+    <div class="edit-modal" id="addStudentModal">
+        <div class="edit-modal-container">
+            <div class="edit-modal-header">
+                <h3 class="edit-modal-title">Add New Student</h3>
+                <button class="close-detail-modal" onclick="closeAddStudentModal()">&times;</button>
+            </div>
+            <div class="edit-modal-content">
+                <form id="addStudentForm">
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="addName">Full Name *</label>
+                        <input type="text" id="addName" class="edit-form-input" required>
+                    </div>
+                    
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="addGender">Gender *</label>
+                        <select id="addGender" class="edit-form-input" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    
+                    
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="addProfilePicture">Profile Picture</label>
+                        <input type="file" id="addProfilePicture" class="edit-form-file" accept="image/*">
+                        <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">
+                            Upload a profile picture (optional, max 5MB)
+                        </div>
+                    </div>
+                    
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="addReportType">Upload Initial Report (Optional)</label>
+                        <select id="addReportType" class="edit-form-input">
+                            <option value="">Select Report Type</option>
+                            <option value="mtr">MTR - Mid Term Report</option>
+                            <option value="pdr">PDR - Performance Development Report</option>
+                            <option value="ttb">TTB - Trade Testing Board</option>
+                            <option value="ftr">FTR - Final Term Report</option>
+                        </select>
+                    </div>
+                    
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="addReportFile">Report File</label>
+                        <input type="file" id="addReportFile" class="edit-form-file" accept=".pdf,.doc,.docx">
+                        <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">
+                            Upload PDF, DOC, or DOCX files only (optional, max 5MB)
+                        </div>
+                    </div>
+                    
+                    <div class="edit-form-group">
+                        <label class="edit-form-label" for="addReportComments">Uploader's Name and Comments</label>
+                        <textarea id="addReportComments" class="edit-form-input" rows="3" 
+                                  placeholder="Start by writing your name. Example: Uploaded by Breeha. You can also add any additional comments here."></textarea>
+                    </div>
+                    
+                    <div class="edit-modal-actions">
+                        <button type="button" class="admin-btn cancel-btn" onclick="closeAddStudentModal()">Cancel</button>
+                        <button type="submit" class="admin-btn save-btn">Add Student</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -1433,7 +2319,7 @@
                             <p><strong>Version:</strong> ${version}</p>
                         </div>
                         ${comments !== 'No comments' ? `<div class="report-comments">${comments}</div>` : ''}
-                        <a href="${report.file_url}" target="_blank" class="view-report-btn">View Report</a>
+                        <button onclick="openReportFile('${report.file_url}', '${reportType}')" class="view-report-btn">View Report</button>
                     `;
 
                     reportsGrid.appendChild(reportCard);
@@ -1457,6 +2343,47 @@
         function clearResults() {
             document.getElementById('searchResults').style.display = 'none';
             document.getElementById('searchInput').value = '';
+        }
+
+        // Function to open report files (handles both URLs and data URLs)
+        function openReportFile(fileUrl, reportType) {
+            try {
+                console.log('Opening report file:', reportType, 'URL type:', fileUrl.startsWith('data:') ? 'Data URL' : 'Regular URL');
+                
+                if (fileUrl.startsWith('data:')) {
+                    // Handle data URL - create a temporary link and click it
+                    const link = document.createElement('a');
+                    link.href = fileUrl;
+                    
+                    // Extract file extension from data URL
+                    let fileExtension = 'pdf'; // default
+                    if (fileUrl.includes('data:application/pdf')) {
+                        fileExtension = 'pdf';
+                    } else if (fileUrl.includes('data:application/msword')) {
+                        fileExtension = 'doc';
+                    } else if (fileUrl.includes('data:application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
+                        fileExtension = 'docx';
+                    }
+                    
+                    // Set download filename
+                    link.download = `${reportType}_report.${fileExtension}`;
+                    link.target = '_blank';
+                    
+                    // Temporarily add to DOM, click, then remove
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    console.log('Data URL file opened successfully');
+                } else {
+                    // Handle regular URL
+                    window.open(fileUrl, '_blank');
+                    console.log('Regular URL opened successfully');
+                }
+            } catch (error) {
+                console.error('Error opening report file:', error);
+                alert('Error opening report file. Please try again or contact support.');
+            }
         }
 
         // Modal functions
@@ -1540,6 +2467,7 @@
         // Close student detail modal
         function closeStudentDetailModal() {
             document.getElementById('studentDetailModal').style.display = 'none';
+            currentEditingStudent = null; // Reset here instead
         }
 
         // Close modal when clicking outside
@@ -1565,8 +2493,12 @@
             await Promise.all([
                 loadTotalStudents(),
                 loadTotalReports(),
-                loadRecentlyViewedStudents(),
-                loadGenderStatistics()
+                loadTotalStaff(),
+                loadGenderStatistics(),
+                loadStudentsMissingReports(),
+                loadActivityLogs(),
+                loadMissingReportsDetail(),
+                loadRecentlyViewedStudents()
             ]);
         }
 
@@ -1650,10 +2582,6 @@
         function loadRecentlyViewedStudents() {
             const recentStudents = getRecentlyViewedStudents();
             const recentStudentsList = document.getElementById('recentStudentsList');
-            const recentlyViewedCount = document.getElementById('recentlyViewedCount');
-
-            // Update count
-            recentlyViewedCount.textContent = recentStudents.length;
 
             // Clear existing content
             recentStudentsList.innerHTML = '';
@@ -1780,6 +2708,1261 @@
             });
             
             lastLoginElement.textContent = `${formattedDate}, ${formattedTime}`;
+        }
+        
+        // Admin-specific functionality
+        let currentEditingStudent = null;
+        
+        // Show/hide admin actions based on user role
+        function toggleAdminActions() {
+            const adminActions = document.getElementById('adminActions');
+            const userRole = localStorage.getItem('selectedRole');
+            
+            if (adminActions) {
+                if (userRole === 'admin') {
+                    adminActions.style.display = 'flex';
+                } else {
+                    adminActions.style.display = 'none';
+                }
+            }
+        }
+        
+        // Update selectStudent function to show admin actions for admin users
+        const originalSelectStudent = selectStudent;
+        selectStudent = async function(student) {
+            currentEditingStudent = student;
+            await originalSelectStudent(student);
+            toggleAdminActions();
+        };
+        
+        // Delete student function
+        async function deleteStudent() {
+            if (!currentEditingStudent) {
+                alert('No student selected for deletion');
+                return;
+            }
+            
+            const confirmDelete = confirm(
+                `Are you sure you want to delete ${currentEditingStudent.name}?\n\n` +
+                `This action will permanently remove:\n` +
+                `• Student information\n` +
+                `• All associated reports\n` +
+                `• This action cannot be undone!`
+            );
+            
+            if (!confirmDelete) return;
+            
+            try {
+                // Delete student reports first (due to foreign key constraint)
+                const { error: reportsError } = await supabase
+                    .from('student_reports')
+                    .delete()
+                    .eq('student_id', currentEditingStudent.id);
+                
+                if (reportsError) {
+                    console.error('Error deleting student reports:', reportsError);
+                    alert('Error deleting student reports: ' + reportsError.message);
+                    return;
+                }
+                
+                // Delete student record
+                const { error: studentError } = await supabase
+                    .from('Students')
+                    .delete()
+                    .eq('id', currentEditingStudent.id);
+                
+                if (studentError) {
+                    console.error('Error deleting student:', studentError);
+                    alert('Error deleting student: ' + studentError.message);
+                    return;
+                }
+                
+                alert(`${currentEditingStudent.name} has been successfully deleted from the system.`);
+                
+                // Close modal and refresh data
+                closeStudentDetailModal();
+                loadDashboardStatistics(); // Refresh statistics
+                clearResults(); // Clear search results
+                
+            } catch (error) {
+                console.error('Error in delete operation:', error);
+                alert('An unexpected error occurred while deleting the student.');
+            }
+        }
+        
+        // Open edit modal
+        function openEditModal() {
+            if (!currentEditingStudent) {
+                alert('No student selected for editing');
+                return;
+            }
+            
+            // Populate form with current student data
+            document.getElementById('editName').value = currentEditingStudent.name || '';
+            document.getElementById('editGender').value = currentEditingStudent.gender || '';
+            // document.getElementById('editBloodGroup').value = currentEditingStudent.blood_group || '';
+            // document.getElementById('editDateOfBirth').value = currentEditingStudent.date_of_birth || '';
+            // document.getElementById('editPhoneNumber').value = currentEditingStudent.phone_number || '';
+            // document.getElementById('editAddress').value = currentEditingStudent.address || '';
+            // document.getElementById('editGuardianName').value = currentEditingStudent.guardian_name || '';
+            // document.getElementById('editGuardianPhone').value = currentEditingStudent.guardian_phone || '';
+            // document.getElementById('editEmergencyContact').value = currentEditingStudent.emergency_contact || '';
+            // document.getElementById('editMedicalConditions').value = currentEditingStudent.medical_conditions || '';
+            
+            // Reset file inputs and report fields
+            document.getElementById('editProfilePicture').value = '';
+            document.getElementById('editReportType').value = '';
+            document.getElementById('editReportFile').value = '';
+            document.getElementById('editReportComments').value = '';
+            
+            // Show edit modal
+            document.getElementById('editModal').style.display = 'flex';
+        }
+        
+        // Close edit modal
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+            // Don't reset currentEditingStudent to null here - keep it until we're done
+        }
+        
+        // Handle file upload preview and conversion
+        function handleFileUpload(input, type) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            // Validate file size (max 5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('File size must be less than 5MB');
+                input.value = '';
+                return;
+            }
+            
+            // Validate file type
+            if (type === 'profile') {
+                const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+                if (!allowedTypes.includes(file.type)) {
+                    alert('Please upload a valid image file (JPEG, PNG, GIF)');
+                    input.value = '';
+                    return;
+                }
+                
+                // Convert image to data URL for immediate preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Store the data URL for later use
+                    input.dataset.dataUrl = e.target.result;
+                    console.log('Profile picture converted to data URL');
+                };
+                reader.readAsDataURL(file);
+                
+            } else if (type === 'report') {
+                const allowedTypes = [
+                    'application/pdf', 
+                    'application/msword', 
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                ];
+                if (!allowedTypes.includes(file.type)) {
+                    alert('Please upload a valid document file (PDF, DOC, DOCX)');
+                    input.value = '';
+                    return;
+                }
+                
+                // Convert report file to data URL for storage
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Store the data URL for later use
+                    input.dataset.dataUrl = e.target.result;
+                    input.dataset.fileName = file.name;
+                    input.dataset.fileType = file.type;
+                    console.log('Report file converted to data URL:', file.name);
+                };
+                reader.readAsDataURL(file);
+            }
+            
+            console.log(`${type} file selected:`, file.name);
+        }
+        
+        // Handle edit form submission
+        document.getElementById('editStudentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!currentEditingStudent) {
+                alert('No student selected for editing');
+                return;
+            }
+            
+            // Validate required fields
+            const nameValue = document.getElementById('editName').value.trim();
+            if (!nameValue) {
+                alert('Student name is required and cannot be empty.');
+                document.getElementById('editName').focus();
+                return;
+            }
+            
+            // Store the student ID to prevent null reference issues
+            const studentId = currentEditingStudent.id;
+            const studentName = currentEditingStudent.name;
+            
+            // Validate that we have a valid student ID
+            if (!studentId) {
+                alert('Invalid student data. Please close the modal and try again.');
+                console.error('Student ID is missing:', currentEditingStudent);
+                return;
+            }
+            
+            try {
+                console.log('Starting student update for ID:', studentId, 'Name:', studentName);
+                
+                // Prepare student data update
+                const studentUpdates = {};
+                
+                const genderValue = document.getElementById('editGender').value;
+                // const bloodGroupValue = document.getElementById('editBloodGroup').value;
+                // const dateOfBirthValue = document.getElementById('editDateOfBirth').value;
+                // const phoneNumberValue = document.getElementById('editPhoneNumber').value;
+                // const addressValue = document.getElementById('editAddress').value;
+                // const guardianNameValue = document.getElementById('editGuardianName').value;
+                // const guardianPhoneValue = document.getElementById('editGuardianPhone').value;
+                // const emergencyContactValue = document.getElementById('editEmergencyContact').value;
+                // const medicalConditionsValue = document.getElementById('editMedicalConditions').value;
+                
+                // Only add fields that have values and are different from current
+                // if (nameValue && nameValue !== currentEditingStudent.name) {
+                //     studentUpdates.name = nameValue;
+                // }
+                // if (genderValue && genderValue !== currentEditingStudent.gender) {
+                //     studentUpdates.gender = genderValue;
+                // }
+                // if (bloodGroupValue && bloodGroupValue !== currentEditingStudent.blood_group) {
+                //     studentUpdates.blood_group = bloodGroupValue;
+                // }
+                // if (dateOfBirthValue && dateOfBirthValue !== currentEditingStudent.date_of_birth) {
+                //     studentUpdates.date_of_birth = dateOfBirthValue;
+                // }
+                // if (phoneNumberValue && phoneNumberValue !== currentEditingStudent.phone_number) {
+                //     studentUpdates.phone_number = phoneNumberValue;
+                // }
+                // if (addressValue && addressValue !== currentEditingStudent.address) {
+                //     studentUpdates.address = addressValue;
+                // }
+                // if (guardianNameValue && guardianNameValue !== currentEditingStudent.guardian_name) {
+                //     studentUpdates.guardian_name = guardianNameValue;
+                // }
+                // if (guardianPhoneValue && guardianPhoneValue !== currentEditingStudent.guardian_phone) {
+                //     studentUpdates.guardian_phone = guardianPhoneValue;
+                // }
+                // if (emergencyContactValue && emergencyContactValue !== currentEditingStudent.emergency_contact) {
+                //     studentUpdates.emergency_contact = emergencyContactValue;
+                // }
+                // if (medicalConditionsValue && medicalConditionsValue !== currentEditingStudent.medical_conditions) {
+                //     studentUpdates.medical_conditions = medicalConditionsValue;
+                // }
+                
+                // Handle profile picture upload
+                const profilePictureInput = document.getElementById('editProfilePicture');
+                const profilePictureFile = profilePictureInput.files[0];
+                
+                if (profilePictureFile) {
+                    console.log('Profile picture selected:', profilePictureFile.name);
+                    
+                    // Validate file size (max 5MB)
+                    if (profilePictureFile.size > 5 * 1024 * 1024) {
+                        alert('Profile picture file size must be less than 5MB');
+                        return;
+                    }
+                    
+                    // Validate file type
+                    const allowedImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+                    if (!allowedImageTypes.includes(profilePictureFile.type)) {
+                        alert('Please upload a valid image file (JPEG, PNG, GIF)');
+                        return;
+                    }
+                    
+                    // Always convert file to data URL for storage
+                    try {
+                        const dataUrl = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload = e => {
+                                console.log('Profile picture successfully converted to data URL');
+                                resolve(e.target.result);
+                            };
+                            reader.onerror = e => {
+                                console.error('Error reading profile picture:', e);
+                                reject(e);
+                            };
+                            reader.readAsDataURL(profilePictureFile);
+                        });
+                        
+                        if (dataUrl) {
+                            studentUpdates.profile_picture_url = dataUrl;
+                            console.log('Profile picture data URL created, length:', dataUrl.length);
+                        } else {
+                            console.error('Failed to create data URL for profile picture');
+                            alert('Error processing the profile picture. Please try again.');
+                            return;
+                        }
+                    } catch (error) {
+                        console.error('Error converting profile picture to data URL:', error);
+                        alert('Error processing the profile picture. Please try again.');
+                        return;
+                    }
+                }
+                
+                console.log('Student updates to apply:', studentUpdates);
+                
+                // Update student information if there are changes
+                if (Object.keys(studentUpdates).length > 0) {
+                    console.log('Updating student with ID:', studentId);
+                    
+                    const { data: updatedData, error: updateError } = await supabase
+                        .from('Students')
+                        .update(studentUpdates)
+                        .eq('id', studentId)
+                        .select();
+                    
+                    if (updateError) {
+                        console.error('Supabase update error:', updateError);
+                        alert('Error updating student information: ' + updateError.message + '\nCode: ' + (updateError.code || 'Unknown'));
+                        return;
+                    }
+                    
+                    console.log('Student updated successfully:', updatedData);
+                } else {
+                    console.log('No student data changes to update');
+                }
+                
+                // Handle new report upload
+                const reportType = document.getElementById('editReportType').value;
+                const reportFile = document.getElementById('editReportFile').files[0];
+                const reportComments = document.getElementById('editReportComments').value.trim();
+                
+                // Initialize variables for success message
+                let existingReports = null;
+                let processedReportType = null;
+                let reportWasProcessed = false;
+                
+                // Validate report upload - if report type is selected, file must be provided
+                if (reportType && !reportFile) {
+                    alert('Please select a report file when choosing a report type.');
+                    return;
+                }
+                
+                if (reportFile && !reportType) {
+                    alert('Please select a report type when uploading a report file.');
+                    return;
+                }
+                
+                if (reportType && reportFile) {
+                    console.log('Adding new report:', reportType, 'File:', reportFile.name);
+                    console.log('Report type selected from dropdown:', reportType);
+                    
+                    // Validate file size (max 5MB)
+                    if (reportFile.size > 5 * 1024 * 1024) {
+                        alert('Report file size must be less than 5MB');
+                        return;
+                    }
+                    
+                    // Validate file type
+                    const allowedReportTypes = [
+                        'application/pdf', 
+                        'application/msword', 
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                    ];
+                    if (!allowedReportTypes.includes(reportFile.type)) {
+                        alert('Please upload a valid document file (PDF, DOC, DOCX)');
+                        return;
+                    }
+                    
+                    // Try to determine the correct report type format
+                    processedReportType = reportType;
+                    
+                    // The database might expect just the acronym without description
+                    if (reportType.includes(' - ')) {
+                        processedReportType = reportType.split(' - ')[0].trim();
+                    }
+                    
+                    console.log('Processed report type for database:', processedReportType);
+                    
+                    // Get the report file input element
+                    const reportFileInput = document.getElementById('editReportFile');
+                    let fileUrl = null;
+                    
+                    // Convert file to data URL for storage
+                    console.log('Converting report file to data URL...');
+                    try {
+                        fileUrl = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload = e => {
+                                console.log('File successfully converted to data URL');
+                                resolve(e.target.result);
+                            };
+                            reader.onerror = e => {
+                                console.error('Error reading file:', e);
+                                reject(e);
+                            };
+                            reader.readAsDataURL(reportFile);
+                        });
+                    } catch (error) {
+                        console.error('Error converting report file to data URL:', error);
+                        alert('Error processing the report file. Please try again.');
+                        return;
+                    }
+                    
+                    if (!fileUrl) {
+                        alert('Failed to process the report file. Please try again.');
+                        return;
+                    }
+                    
+                    console.log('Data URL created successfully, length:', fileUrl.length);
+                    
+                    // First, check if a report of this type already exists for this student
+                    console.log('Checking for existing report of type:', processedReportType);
+                    const { data: existingReportsData, error: checkError } = await supabase
+                        .from('student_reports')
+                        .select('id')
+                        .eq('student_id', studentId)
+                        .eq('report_type', processedReportType);
+                    
+                    if (checkError) {
+                        console.error('Error checking existing reports:', checkError);
+                        // Continue with insert if check fails
+                    } else {
+                        existingReports = existingReportsData;
+                    }
+                    
+                    // Create report data with proper file URL
+                    const reportData = {
+                        student_id: studentId,
+                        report_type: processedReportType,
+                        file_url: fileUrl, // Use data URL
+                        comments: reportComments || null,
+                        uploaded_at: new Date().toISOString(),
+                        version: '1.0'
+                    };
+                    
+                    console.log('Report data prepared:', {
+                        student_id: reportData.student_id,
+                        report_type: reportData.report_type,
+                        file_url: `[DATA URL - ${reportFile.name} - ${Math.round(fileUrl.length/1024)}KB]`,
+                        comments: reportData.comments,
+                        uploaded_at: reportData.uploaded_at,
+                        version: reportData.version
+                    });
+                    
+                    let reportResult = null;
+                    let reportError = null;
+                    
+                    // If existing report found, update it; otherwise insert new one
+                    if (existingReports && existingReports.length > 0) {
+                        console.log('Updating existing report with ID:', existingReports[0].id);
+                        const { data: updateResult, error: updateError } = await supabase
+                            .from('student_reports')
+                            .update(reportData)
+                            .eq('id', existingReports[0].id)
+                            .select();
+                        
+                        reportResult = updateResult;
+                        reportError = updateError;
+                    } else {
+                        console.log('Creating new report');
+                        const { data: insertResult, error: insertError } = await supabase
+                            .from('student_reports')
+                            .insert([reportData])
+                            .select();
+                        
+                        reportResult = insertResult;
+                        reportError = insertError;
+                    }
+                    
+                    if (reportError) {
+                        console.error('Error uploading report:', reportError);
+                        console.error('Report error details:', {
+                            code: reportError.code,
+                            message: reportError.message,
+                            details: reportError.details,
+                            hint: reportError.hint
+                        });
+                        
+                        // If it's a constraint violation, try alternative formats
+                        if (reportError.code === '23514') {
+                            console.log('Constraint violation detected. Trying alternative report type formats...');
+                            
+                            // Try different formats
+                            const alternativeFormats = [
+                                processedReportType.toLowerCase(),
+                                processedReportType.toUpperCase(),
+                                'other' // Fallback
+                            ];
+                            
+                            for (const altType of alternativeFormats) {
+                                console.log('Trying alternative format:', altType);
+                                
+                                const altReportData = {
+                                    ...reportData,
+                                    report_type: altType
+                                };
+                                
+                                // Try update first, then insert
+                                let altResult = null;
+                                let altError = null;
+                                
+                                if (existingReports && existingReports.length > 0) {
+                                    const { data: altUpdateResult, error: altUpdateError } = await supabase
+                                        .from('student_reports')
+                                        .update(altReportData)
+                                        .eq('id', existingReports[0].id)
+                                        .select();
+                                    altResult = altUpdateResult;
+                                    altError = altUpdateError;
+                                } else {
+                                    const { data: altInsertResult, error: altInsertError } = await supabase
+                                        .from('student_reports')
+                                        .insert([altReportData])
+                                        .select();
+                                    altResult = altInsertResult;
+                                    altError = altInsertError;
+                                }
+                                
+                                if (!altError) {
+                                    console.log('Success with alternative format:', altType);
+                                    console.log('Report uploaded successfully:', altResult);
+                                    reportResult = altResult;
+                                    reportError = null;
+                                    reportWasProcessed = true;
+                                    break;
+                                } else {
+                                    console.log('Alternative format failed:', altType, altError.message);
+                                }
+                            }
+                        }
+                        
+                        if (reportError) {
+                            alert('Student updated successfully, but there was an error uploading the report: ' + reportError.message + '\nCode: ' + (reportError.code || 'Unknown') + '\n\nThe report type "' + processedReportType + '" may not be allowed. Check console for details.');
+                        }
+                    } else {
+                        console.log('Report uploaded successfully:', reportResult);
+                        const action = existingReports && existingReports.length > 0 ? 'updated' : 'created';
+                        console.log(`Report ${action} successfully for student ${studentId}`);
+                        reportWasProcessed = true;
+                    }
+                }
+                
+                // Create comprehensive success message
+                let successMessage = 'Student information updated successfully!';
+                
+                // Add details about what was updated
+                const updateDetails = [];
+                if (Object.keys(studentUpdates).length > 0) {
+                    updateDetails.push('Student profile updated');
+                }
+                if (reportWasProcessed && processedReportType) {
+                    const reportAction = existingReports && existingReports.length > 0 ? 'updated' : 'added';
+                    updateDetails.push(`${processedReportType.toUpperCase()} report ${reportAction}`);
+                }
+                
+                if (updateDetails.length > 0) {
+                    successMessage += '\n\nChanges made:\n• ' + updateDetails.join('\n• ');
+                }
+                
+                alert(successMessage);
+                
+                // Close modal and refresh
+                closeEditModal();
+                
+                // Refresh the student detail modal with updated data
+                console.log('Fetching updated student data for ID:', studentId);
+                const { data: updatedStudent, error: fetchError } = await supabase
+                    .from('Students')
+                    .select('*')
+                    .eq('id', studentId)
+                    .single();
+                
+                if (fetchError) {
+                    console.error('Error fetching updated student:', fetchError);
+                    // Still show the modal with old data if fetch fails
+                    if (currentEditingStudent) {
+                        selectStudent(currentEditingStudent);
+                    }
+                } else if (updatedStudent) {
+                    console.log('Updated student data fetched:', updatedStudent);
+                    currentEditingStudent = updatedStudent; // Update the current student reference
+                    selectStudent(updatedStudent);
+                }
+                
+                // Refresh statistics
+                loadDashboardStatistics();
+                
+            } catch (error) {
+                console.error('Unexpected error in edit operation:', error);
+                console.error('Error details:', {
+                    message: error.message,
+                    stack: error.stack,
+                    name: error.name,
+                    studentId: studentId,
+                    currentEditingStudent: currentEditingStudent
+                });
+                alert('An unexpected error occurred while updating the student:\n' + error.message + '\n\nStudent ID: ' + studentId + '\nPlease check the console for more details.');
+            }
+        });
+        
+        // Close edit modal when clicking outside
+        document.getElementById('editModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeEditModal();
+            }
+        });
+
+        // Debug function to check database schema and student structure
+        async function debugDatabaseInfo() {
+            try {
+                console.log('=== DATABASE DEBUG INFO ===');
+                
+                // Check if we can query the Students table
+                const { data: students, error: studentsError } = await supabase
+                    .from('Students')
+                    .select('*')
+                    .limit(1);
+                
+                if (studentsError) {
+                    console.error('Error querying Students table:', studentsError);
+                } else {
+                    console.log('Students table sample:', students);
+                    if (students && students.length > 0) {
+                        console.log('Student columns:', Object.keys(students[0]));
+                    }
+                }
+                
+                // Check if we can query the student_reports table
+                const { data: reports, error: reportsError } = await supabase
+                    .from('student_reports')
+                    .select('*')
+                    .limit(1);
+                
+                if (reportsError) {
+                    console.error('Error querying student_reports table:', reportsError);
+                    console.error('Reports table error details:', {
+                        code: reportsError.code,
+                        message: reportsError.message,
+                        details: reportsError.details,
+                        hint: reportsError.hint
+                    });
+                } else {
+                    console.log('student_reports table sample:', reports);
+                    if (reports && reports.length > 0) {
+                        console.log('Reports columns:', Object.keys(reports[0]));
+                        console.log('Sample report data types:', reports[0]);
+                    } else {
+                        console.log('student_reports table is empty');
+                        
+                        // Try to get table structure by attempting an insert with minimal data
+                        console.log('Attempting to determine table structure...');
+                        const { error: structureError } = await supabase
+                            .from('student_reports')
+                            .insert([{ student_id: 999999 }]) // This will fail but show us required fields
+                            .select();
+                        
+                        if (structureError) {
+                            console.log('Table structure error (expected):', {
+                                code: structureError.code,
+                                message: structureError.message,
+                                details: structureError.details,
+                                hint: structureError.hint
+                            });
+                        }
+                    }
+                }
+                
+                console.log('Current editing student:', currentEditingStudent);
+                console.log('User email:', userEmail);
+                console.log('=== END DEBUG INFO ===');
+                
+            } catch (error) {
+                console.error('Error in debug function:', error);
+            }
+        }
+        
+        // Call debug function when opening edit modal
+        const originalOpenEditModal = openEditModal;
+        openEditModal = function() {
+            debugDatabaseInfo();
+            originalOpenEditModal();
+        };
+
+        // Add Student Modal Functions
+        
+        // Open add student modal
+        function openAddStudentModal() {
+            // Only allow admin users to add students
+            const userRole = localStorage.getItem('selectedRole');
+            if (userRole !== 'admin') {
+                alert('Only admin users can add new students.');
+                return;
+            }
+            
+            // Reset form fields
+            document.getElementById('addStudentForm').reset();
+            
+            // Show add student modal
+            document.getElementById('addStudentModal').style.display = 'flex';
+        }
+        
+        // Close add student modal
+        function closeAddStudentModal() {
+            document.getElementById('addStudentModal').style.display = 'none';
+        }
+        
+        // Handle add student form submission
+        document.getElementById('addStudentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            try {
+                console.log('Starting new student creation...');
+                
+                // Validate required fields
+                const nameValue = document.getElementById('addName').value.trim();
+                const genderValue = document.getElementById('addGender').value;
+                
+                if (!nameValue) {
+                    alert('Student name is required and cannot be empty.');
+                    document.getElementById('addName').focus();
+                    return;
+                }
+                
+                if (!genderValue) {
+                    alert('Gender selection is required.');
+                    document.getElementById('addGender').focus();
+                    return;
+                }
+                
+                console.log('Creating student:', nameValue, 'Gender:', genderValue);
+                
+                // Prepare student data
+                const studentData = {
+                    name: nameValue,
+                    gender: genderValue
+                };
+                
+                // Handle profile picture upload
+                const profilePictureInput = document.getElementById('addProfilePicture');
+                const profilePictureFile = profilePictureInput.files[0];
+                
+                if (profilePictureFile) {
+                    console.log('Profile picture selected:', profilePictureFile.name);
+                    
+                    // Validate file size (max 5MB)
+                    if (profilePictureFile.size > 5 * 1024 * 1024) {
+                        alert('Profile picture file size must be less than 5MB');
+                        return;
+                    }
+                    
+                    // Validate file type
+                    const allowedImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+                    if (!allowedImageTypes.includes(profilePictureFile.type)) {
+                        alert('Please upload a valid image file (JPEG, PNG, GIF)');
+                        return;
+                    }
+                    
+                    // Convert file to data URL for storage
+                    try {
+                        const dataUrl = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload = e => {
+                                console.log('Profile picture successfully converted to data URL');
+                                resolve(e.target.result);
+                            };
+                            reader.onerror = e => {
+                                console.error('Error reading profile picture:', e);
+                                reject(e);
+                            };
+                            reader.readAsDataURL(profilePictureFile);
+                        });
+                        
+                        if (dataUrl) {
+                            studentData.profile_picture_url = dataUrl;
+                            console.log('Profile picture data URL created, length:', dataUrl.length);
+                        } else {
+                            console.error('Failed to create data URL for profile picture');
+                            alert('Error processing the profile picture. Please try again.');
+                            return;
+                        }
+                    } catch (error) {
+                        console.error('Error converting profile picture to data URL:', error);
+                        alert('Error processing the profile picture. Please try again.');
+                        return;
+                    }
+                } else {
+                    // Use default avatar if no profile picture uploaded
+                    studentData.profile_picture_url = 'no pfp.jpeg';
+                }
+                
+                console.log('Student data prepared:', {
+                    name: studentData.name,
+                    gender: studentData.gender,
+                    profile_picture_url: studentData.profile_picture_url === 'no pfp.jpeg' ? 'Default Avatar' : `[DATA URL - ${Math.round(studentData.profile_picture_url.length/1024)}KB]`
+                });
+                
+                // Insert new student into database
+                console.log('Inserting student into database...');
+                const { data: insertedStudent, error: insertError } = await supabase
+                    .from('Students')
+                    .insert([studentData])
+                    .select();
+                
+                if (insertError) {
+                    console.error('Supabase insert error:', insertError);
+                    alert('Error creating student: ' + insertError.message + '\nCode: ' + (insertError.code || 'Unknown'));
+                    return;
+                }
+                
+                if (!insertedStudent || insertedStudent.length === 0) {
+                    console.error('No student data returned after insert');
+                    alert('Error: Student was not created properly. Please try again.');
+                    return;
+                }
+                
+                const newStudent = insertedStudent[0];
+                console.log('Student created successfully:', newStudent);
+                
+                // Handle report upload if provided
+                const reportType = document.getElementById('addReportType').value;
+                const reportFile = document.getElementById('addReportFile').files[0];
+                const reportComments = document.getElementById('addReportComments').value.trim();
+                
+                let reportWasProcessed = false;
+                let processedReportType = null;
+                
+                // Validate report upload - if report type is selected, file must be provided
+                if (reportType && !reportFile) {
+                    alert('Please select a report file when choosing a report type.');
+                    return;
+                }
+                
+                if (reportFile && !reportType) {
+                    alert('Please select a report type when uploading a report file.');
+                    return;
+                }
+                
+                if (reportType && reportFile) {
+                    console.log('Adding initial report:', reportType, 'File:', reportFile.name);
+                    
+                    // Validate file size (max 5MB)
+                    if (reportFile.size > 5 * 1024 * 1024) {
+                        alert('Report file size must be less than 5MB');
+                        return;
+                    }
+                    
+                    // Validate file type
+                    const allowedReportTypes = [
+                        'application/pdf', 
+                        'application/msword', 
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                    ];
+                    if (!allowedReportTypes.includes(reportFile.type)) {
+                        alert('Please upload a valid document file (PDF, DOC, DOCX)');
+                        return;
+                    }
+                    
+                    // Process report type
+                    processedReportType = reportType;
+                    if (reportType.includes(' - ')) {
+                        processedReportType = reportType.split(' - ')[0].trim();
+                    }
+                    
+                    console.log('Processed report type for database:', processedReportType);
+                    
+                    // Convert file to data URL for storage
+                    console.log('Converting report file to data URL...');
+                    let fileUrl = null;
+                    try {
+                        fileUrl = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload = e => {
+                                console.log('File successfully converted to data URL');
+                                resolve(e.target.result);
+                            };
+                            reader.onerror = e => {
+                                console.error('Error reading file:', e);
+                                reject(e);
+                            };
+                            reader.readAsDataURL(reportFile);
+                        });
+                    } catch (error) {
+                        console.error('Error converting report file to data URL:', error);
+                        alert('Error processing the report file. Please try again.');
+                        return;
+                    }
+                    
+                    if (!fileUrl) {
+                        alert('Failed to process the report file. Please try again.');
+                        return;
+                    }
+                    
+                    console.log('Data URL created successfully, length:', fileUrl.length);
+                    
+                    // Create report data
+                    const reportData = {
+                        student_id: newStudent.id,
+                        report_type: processedReportType,
+                        file_url: fileUrl,
+                        comments: reportComments || null,
+                        uploaded_at: new Date().toISOString(),
+                        version: '1.0'
+                    };
+                    
+                    console.log('Report data prepared:', {
+                        student_id: reportData.student_id,
+                        report_type: reportData.report_type,
+                        file_url: `[DATA URL - ${reportFile.name} - ${Math.round(fileUrl.length/1024)}KB]`,
+                        comments: reportData.comments,
+                        uploaded_at: reportData.uploaded_at,
+                        version: reportData.version
+                    });
+                    
+                    // Insert report
+                    console.log('Creating initial report...');
+                    const { data: reportResult, error: reportError } = await supabase
+                        .from('student_reports')
+                        .insert([reportData])
+                        .select();
+                    
+                    if (reportError) {
+                        console.error('Error uploading initial report:', reportError);
+                        console.error('Report error details:', {
+                            code: reportError.code,
+                            message: reportError.message,
+                            details: reportError.details,
+                            hint: reportError.hint
+                        });
+                        
+                        // If it's a constraint violation, try alternative formats
+                        if (reportError.code === '23514') {
+                            console.log('Constraint violation detected. Trying alternative report type formats...');
+                            
+                            const alternativeFormats = [
+                                processedReportType.toLowerCase(),
+                                processedReportType.toUpperCase(),
+                                'other' // Fallback
+                            ];
+                            
+                            for (const altType of alternativeFormats) {
+                                console.log('Trying alternative format:', altType);
+                                
+                                const altReportData = {
+                                    ...reportData,
+                                    report_type: altType
+                                };
+                                
+                                const { data: altResult, error: altError } = await supabase
+                                    .from('student_reports')
+                                    .insert([altReportData])
+                                    .select();
+                                
+                                if (!altError) {
+                                    console.log('Success with alternative format:', altType);
+                                    console.log('Report uploaded successfully:', altResult);
+                                    reportWasProcessed = true;
+                                    break;
+                                } else {
+                                    console.log('Alternative format failed:', altType, altError.message);
+                                }
+                            }
+                        }
+                        
+                        if (!reportWasProcessed) {
+                            alert('Student created successfully, but there was an error uploading the initial report: ' + reportError.message + '\nYou can add reports later from the student detail page.');
+                        }
+                    } else {
+                        console.log('Initial report uploaded successfully:', reportResult);
+                        reportWasProcessed = true;
+                    }
+                }
+                
+                // Create success message
+                let successMessage = `Student "${nameValue}" has been successfully added to the database!`;
+                
+                if (reportWasProcessed && processedReportType) {
+                    successMessage += `\n\nInitial ${processedReportType.toUpperCase()} report was also uploaded.`;
+                }
+                
+                successMessage += `\n\nStudent ID: ${newStudent.id}`;
+                
+                alert(successMessage);
+                
+                // Close modal and refresh
+                closeAddStudentModal();
+                
+                // Refresh statistics
+                loadDashboardStatistics();
+                
+                // Clear search results if any
+                clearResults();
+                
+            } catch (error) {
+                console.error('Unexpected error in add student operation:', error);
+                console.error('Error details:', {
+                    message: error.message,
+                    stack: error.stack,
+                    name: error.name
+                });
+                alert('An unexpected error occurred while adding the student:\n' + error.message + '\n\nPlease check the console for more details.');
+            }
+        });
+        
+        // Close add student modal when clicking outside
+        document.getElementById('addStudentModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAddStudentModal();
+            }
+        });
+
+        // Load total staff count
+        async function loadTotalStaff() {
+            try {
+                const { count, error } = await supabase
+                    .from('User')
+                    .select('*', { count: 'exact', head: true })
+                    .eq('role', 'staff');
+
+                if (error) {
+                    console.error('Error fetching total staff:', error);
+                    document.getElementById('totalStaff').innerHTML = '<span class="stat-loading">Error</span>';
+                    return;
+                }
+
+                document.getElementById('totalStaff').textContent = count || 0;
+            } catch (error) {
+                console.error('Error loading total staff:', error);
+                document.getElementById('totalStaff').innerHTML = '<span class="stat-loading">Error</span>';
+            }
+        }
+
+        // Load students missing reports count
+        async function loadStudentsMissingReports() {
+            try {
+                // Get all students
+                const { data: allStudents, error: studentsError } = await supabase
+                    .from('Students')
+                    .select('id');
+
+                if (studentsError) {
+                    console.error('Error fetching students for missing reports:', studentsError);
+                    document.getElementById('studentsMissingReports').innerHTML = '<span class="stat-loading">Error</span>';
+                    return;
+                }
+
+                // Get all reports with student_id and report_type
+                const { data: allReports, error: reportsError } = await supabase
+                    .from('student_reports')
+                    .select('student_id, report_type')
+                    .not('student_id', 'is', null);
+
+                if (reportsError) {
+                    console.error('Error fetching reports:', reportsError);
+                    document.getElementById('studentsMissingReports').innerHTML = '<span class="stat-loading">Error</span>';
+                    return;
+                }
+
+                // Define all possible report types
+                const allReportTypes = ['mtr', 'pdr', 'ttb', 'ftr'];
+                
+                // Count students who are missing any reports
+                let studentsMissingReports = 0;
+                
+                (allStudents || []).forEach(student => {
+                    // Get this student's reports
+                    const studentReports = (allReports || []).filter(report => report.student_id === student.id);
+                    const studentReportTypes = new Set(studentReports.map(r => r.report_type));
+                    
+                    // Check if student is missing any report types
+                    const missingReportTypes = allReportTypes.filter(type => !studentReportTypes.has(type));
+                    
+                    if (missingReportTypes.length > 0) {
+                        studentsMissingReports++;
+                    }
+                });
+
+                document.getElementById('studentsMissingReports').textContent = studentsMissingReports;
+            } catch (error) {
+                console.error('Error loading students missing reports:', error);
+                document.getElementById('studentsMissingReports').innerHTML = '<span class="stat-loading">Error</span>';
+            }
+        }
+
+        // Load activity logs
+        async function loadActivityLogs() {
+            const activityContainer = document.getElementById('activityLogsContainer');
+            
+            try {
+                // Get recent reports with student information
+                const { data: recentReports, error } = await supabase
+                    .from('student_reports')
+                    .select(`
+                        id,
+                        report_type,
+                        uploaded_at,
+                        comments,
+                        student_id,
+                        Students!inner(name)
+                    `)
+                    .order('uploaded_at', { ascending: false })
+                    .limit(10);
+
+                if (error) {
+                    console.error('Error fetching activity logs:', error);
+                    activityContainer.innerHTML = '<div class="no-activity">Error loading activity logs</div>';
+                    return;
+                }
+
+                if (!recentReports || recentReports.length === 0) {
+                    activityContainer.innerHTML = '<div class="no-activity">No recent activity found</div>';
+                    return;
+                }
+
+                let activityHtml = '';
+                recentReports.forEach(report => {
+                    const uploadedAt = new Date(report.uploaded_at);
+                    const timeAgo = getTimeAgo(uploadedAt);
+                    const reportTypeUpper = (report.report_type || 'Report').toUpperCase();
+                    const studentName = report.Students?.name || 'Unknown Student';
+                    
+                    // Extract uploader name from comments if available
+                    let uploaderName = 'User Unknown';
+                    if (report.comments) {
+                        const match = report.comments.match(/uploaded by ([^.]+)/i);
+                        if (match) {
+                            uploaderName = match[1].trim();
+                        }
+                    }
+
+                    activityHtml += `
+                        <div class="activity-log-item">
+                            <div class="activity-icon upload">📄</div>
+                            <div class="activity-content">
+                                <div class="activity-action">${reportTypeUpper} Report Uploaded</div>
+                                <div class="activity-details">Student: ${studentName} • By: ${uploaderName}</div>
+                            </div>
+                            <div class="activity-time">${timeAgo}</div>
+                        </div>
+                    `;
+                });
+
+                activityContainer.innerHTML = activityHtml;
+
+            } catch (error) {
+                console.error('Error loading activity logs:', error);
+                activityContainer.innerHTML = '<div class="no-activity">Error loading activity logs</div>';
+            }
+        }
+
+        // Load detailed missing reports information
+        async function loadMissingReportsDetail() {
+            const missingContainer = document.getElementById('missingReportsContainer');
+            
+            try {
+                // Get all students
+                const { data: allStudents, error: studentsError } = await supabase
+                    .from('Students')
+                    .select('id, name, profile_picture_url');
+
+                if (studentsError) {
+                    console.error('Error fetching students for missing reports detail:', studentsError);
+                    missingContainer.innerHTML = '<div class="no-missing-reports">Error loading students</div>';
+                    return;
+                }
+
+                // Get all reports with student_id and report_type
+                const { data: allReports, error: reportsError } = await supabase
+                    .from('student_reports')
+                    .select('student_id, report_type')
+                    .not('student_id', 'is', null);
+
+                if (reportsError) {
+                    console.error('Error fetching reports:', reportsError);
+                    missingContainer.innerHTML = '<div class="no-missing-reports">Error loading reports</div>';
+                    return;
+                }
+
+                // Define all possible report types
+                const allReportTypes = ['mtr', 'pdr', 'ttb', 'ftr'];
+
+                // Find students with missing reports and calculate missing count
+                const studentsWithMissingReports = [];
+                
+                (allStudents || []).forEach(student => {
+                    // Get this student's reports
+                    const studentReports = (allReports || []).filter(report => report.student_id === student.id);
+                    const studentReportTypes = new Set(studentReports.map(r => r.report_type));
+                    
+                    // Check which report types are missing
+                    const missingReportTypes = allReportTypes.filter(type => !studentReportTypes.has(type));
+                    
+                    if (missingReportTypes.length > 0) {
+                        studentsWithMissingReports.push({
+                            ...student,
+                            missingCount: missingReportTypes.length,
+                            missingTypes: missingReportTypes
+                        });
+                    }
+                });
+
+                // Sort by most missing reports first, then limit to 15
+                studentsWithMissingReports
+                    .sort((a, b) => b.missingCount - a.missingCount)
+                    .slice(0, 15);
+
+                if (studentsWithMissingReports.length === 0) {
+                    missingContainer.innerHTML = '<div class="no-missing-reports">All students have complete reports</div>';
+                    return;
+                }
+
+                let missingHtml = '';
+                studentsWithMissingReports.forEach(student => {
+                    const avatarUrl = student.profile_picture_url || 'no pfp.jpeg';
+                    const missingText = student.missingCount === 1 ? '1 report missing' : `${student.missingCount} reports missing`;
+                    
+                    // Create tooltip showing which specific reports are missing
+                    const missingTypesText = student.missingTypes.map(type => type.toUpperCase()).join(', ');
+                    
+                    missingHtml += `
+                        <div class="missing-report-item" onclick="searchAndSelectStudent('${student.name}')" title="Missing: ${missingTypesText}">
+                            <img src="${avatarUrl}" alt="${student.name}" class="missing-report-avatar">
+                            <div class="missing-report-info">
+                                <div class="missing-report-name">${student.name}</div>
+                                <div class="missing-report-id">ID: ${student.id}</div>
+                            </div>
+                            <div class="missing-report-count">${missingText}</div>
+                        </div>
+                    `;
+                });
+
+                missingContainer.innerHTML = missingHtml;
+
+            } catch (error) {
+                console.error('Error loading missing reports detail:', error);
+                missingContainer.innerHTML = '<div class="no-missing-reports">Error loading missing reports</div>';
+            }
+        }
+
+        // Helper function to search and select a student by name
+        async function searchAndSelectStudent(studentName) {
+            try {
+                const { data: students, error } = await supabase
+                    .from('Students')
+                    .select('*')
+                    .ilike('name', `%${studentName}%`)
+                    .limit(1);
+
+                if (error) {
+                    console.error('Error searching for student:', error);
+                    return;
+                }
+
+                if (students && students.length > 0) {
+                    selectStudent(students[0]);
+                }
+            } catch (error) {
+                console.error('Error in searchAndSelectStudent:', error);
+            }
         }
     </script>
 
