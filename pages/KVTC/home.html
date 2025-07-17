@@ -103,6 +103,23 @@
             height: 20px;
         }
 
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3498db;
+        }
+
+        .dot.inactive {
+            background-color: #ddd;
+        }
+
         /* Main Content Styles */
         .main-content {
             position: relative;
@@ -644,13 +661,19 @@
                 
                 <div class="modal-actions">
                     <button class="continue-modal-btn" id="continueModalBtn" onclick="proceedToLogin()" disabled>
-                        Continue to Login
+                        Continue
                     </button>
                 </div>
                 
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
                     <p>New user? <a href="signup.html" class="signup-modal-link">Create an account</a></p>
+                </div> -->
+
+                <div class="progress-dots">
+                    <div class="dot"></div>
+                    <div class="dot inactive"></div>
                 </div>
+
             </div>
         </div>
     </div>
