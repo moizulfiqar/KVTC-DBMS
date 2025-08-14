@@ -65,7 +65,7 @@
         }
 
         .nav-link {
-            color: #3498db;
+            color: #1e3a8a;
             text-decoration: none;
             font-size: 16px;
             font-weight: 500;
@@ -95,7 +95,7 @@
         }
 
         .logout-btn:hover {
-            color: #F7BF0E;
+            color: #10b981;
         }
 
         .logout-icon {
@@ -140,7 +140,7 @@
         }
 
         .highlight-text {
-            color: #F7BF0E;
+            color: #008000;
         }
 
         .subtitle {
@@ -184,7 +184,7 @@
         }
 
         .search-btn {
-            background: #F7BF0E;
+            background: #018749;
             color: white;
             border: none;
             padding: 18px 30px;
@@ -195,7 +195,7 @@
         }
 
         .search-btn:hover {
-            background: #EDBB1C;
+            background: #059669;
         }
 
         .search-example {
@@ -308,7 +308,7 @@
 
         .student-program {
             font-size: 14px;
-            color: #3498db;
+            color: #1e3a8a;
             font-weight: 500;
         }
 
@@ -418,13 +418,13 @@
         }
 
         .role-card-modal:hover {
-            border-color: #3498db;
+            border-color: #1e3a8a;
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .role-card-modal.selected {
-            border-color: #3498db;
+            border-color: #1e3a8a;
             background: #f8f9ff;
         }
 
@@ -446,7 +446,7 @@
         }
 
         .role-card-modal.selected .role-text-modal {
-            color: #3498db;
+            color: #1e3a8a;
         }
 
         .modal-actions {
@@ -455,7 +455,7 @@
         }
 
         .continue-modal-btn {
-            background-color: #3498db;
+            background-color: #1e3a8a;
             color: white;
             border: none;
             padding: 14px 30px;
@@ -467,7 +467,7 @@
         }
 
         .continue-modal-btn:hover:not(:disabled) {
-            background-color: #2980b9;
+            background-color: #1e40af;
         }
 
         .continue-modal-btn:disabled {
@@ -482,7 +482,7 @@
         }
 
         .signup-modal-link {
-            color: #3498db;
+            color: #1e3a8a;
             text-decoration: none;
             font-weight: 600;
         }
@@ -519,7 +519,7 @@
         }
 
         .student-detail-header {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
             padding: 30px 40px;
             border-radius: 16px 16px 0 0;
@@ -603,7 +603,7 @@
             background: #f8f9fa;
             padding: 15px 20px;
             border-radius: 8px;
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #1e3a8a;
         }
 
         .info-label {
@@ -648,7 +648,7 @@
 
         .report-type {
             display: inline-block;
-            background: #3498db;
+            background: #1e3a8a;
             color: white;
             font-size: 12px;
             font-weight: 600;
@@ -659,7 +659,7 @@
         }
 
         .report-type.mtr { background: #e74c3c; }
-        .report-type.pdr { background: #f39c12; }
+        .report-type.pdr { background: #065f46; }
         .report-type.ttb { background: #27ae60; }
         .report-type.ftr { background: #9b59b6; }
 
@@ -683,7 +683,7 @@
         }
 
         .view-report-btn {
-            background: #3498db;
+            background: #1e3a8a;
             color: white;
             border: none;
             padding: 8px 16px;
@@ -697,7 +697,7 @@
         }
 
         .view-report-btn:hover {
-            background: #2980b9;
+            background: #1e40af;
         }
 
         .no-reports {
@@ -723,7 +723,7 @@
             width: 40px;
             height: 40px;
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
+            border-top: 4px solid #1e3a8a;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 15px;
@@ -794,6 +794,27 @@
             .main-heading {
                 font-size: 36px;
             }
+
+            .hero-illustration {
+                max-width: 350px;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+                padding: 15px;
+            }
+
+            .main-dashboard {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -805,6 +826,8 @@
 
             .nav-section {
                 gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .main-content {
@@ -817,10 +840,18 @@
 
             .search-container {
                 flex-direction: column;
+                border-radius: 12px;
+            }
+
+            .search-input {
+                border-radius: 12px 12px 0 0;
+                padding: 16px 20px;
             }
 
             .search-btn {
-                padding: 15px;
+                padding: 16px 20px;
+                border-radius: 0 0 12px 12px;
+                width: 100%;
             }
 
             .brand-title {
@@ -830,6 +861,287 @@
             .logo {
                 width: 50px;
                 height: 50px;
+            }
+
+            .search-results {
+                margin-top: 10px;
+                max-height: 300px;
+            }
+
+            .result-item {
+                padding: 12px 16px;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .student-avatar {
+                width: 60px;
+                height: 60px;
+                margin-right: 0;
+            }
+
+            .student-details {
+                text-align: center;
+            }
+
+            .hero-illustration {
+                max-width: 280px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .search-example {
+                font-size: 13px;
+                text-align: center;
+            }
+
+            .sidebar {
+                padding: 10px;
+            }
+
+            .sidebar-nav {
+                display: flex;
+                overflow-x: auto;
+                gap: 10px;
+                padding: 10px 0;
+            }
+
+            .nav-item {
+                margin-bottom: 0;
+                min-width: 120px;
+            }
+
+            .nav-link {
+                padding: 8px 12px;
+                border-radius: 20px;
+                text-align: center;
+                white-space: nowrap;
+                background: #f8f9fa;
+                border: 1px solid #e9ecef;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .main-dashboard {
+                padding: 15px;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+
+            .dashboard-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .filter-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            .data-table {
+                min-width: 600px;
+            }
+
+            .reports-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-container {
+                margin: 10px;
+                padding: 20px;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 12px 15px;
+                gap: 12px;
+            }
+
+            .main-content {
+                padding: 30px 15px;
+            }
+
+            .main-heading {
+                font-size: 28px;
+                line-height: 1.3;
+            }
+
+            .search-container {
+                box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .search-input {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+
+            .search-btn {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+
+            .brand-title {
+                font-size: 18px;
+            }
+
+            .brand-subtitle {
+                font-size: 12px;
+            }
+
+            .logo {
+                width: 45px;
+                height: 45px;
+            }
+
+            .nav-link {
+                font-size: 14px;
+            }
+
+            .role-indicator {
+                font-size: 14px;
+            }
+
+            .logout-btn {
+                font-size: 14px;
+            }
+
+            .hero-illustration {
+                max-width: 250px;
+            }
+
+            .subtitle {
+                font-size: 15px;
+            }
+
+            .sidebar {
+                padding: 8px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 12px;
+                text-align: center;
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+
+            .main-dashboard {
+                padding: 10px;
+            }
+
+            .primary-btn {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .data-table {
+                font-size: 14px;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 8px 6px;
+            }
+
+            .modal-container {
+                margin: 5px;
+                padding: 15px;
+            }
+
+            .modal-title {
+                font-size: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-input,
+            .form-select {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .main-heading {
+                font-size: 24px;
+            }
+
+            .search-input {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+
+            .search-btn {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+
+            .hero-illustration {
+                max-width: 220px;
+            }
+
+            .brand-title {
+                font-size: 16px;
+            }
+
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .stats-grid {
+                gap: 8px;
+            }
+
+            .stat-card {
+                padding: 10px;
+            }
+
+            .stat-number {
+                font-size: 20px;
+            }
+
+            .data-table {
+                font-size: 13px;
+                min-width: 500px;
+            }
+
+            .primary-btn {
+                padding: 8px 12px;
+                font-size: 12px;
             }
         }
 
@@ -878,7 +1190,7 @@
         }
 
         .stat-card.recent {
-            border-left-color: #DAB23E;
+            border-left-color: #34d399;
         }
 
         .stat-card.female {
@@ -1023,12 +1335,12 @@
         }
 
         .edit-btn {
-            background: #3498db;
+            background: #1e3a8a;
             color: white;
         }
 
         .edit-btn:hover {
-            background: #2980b9;
+            background: #1e40af;
         }
 
         .delete-btn {
@@ -1075,7 +1387,7 @@
         }
 
         .edit-modal-header {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
             padding: 20px 30px;
             border-radius: 16px 16px 0 0;
@@ -1118,7 +1430,7 @@
 
         .edit-form-input:focus {
             outline: none;
-            border-color: #3498db;
+            border-color: #1e3a8a;
         }
 
         .edit-form-file {
@@ -1132,7 +1444,7 @@
         }
 
         .edit-form-file:hover {
-            border-color: #3498db;
+            border-color: #1e3a8a;
         }
 
         .edit-modal-actions {
@@ -1259,7 +1571,7 @@
             width: 60px;
             height: 60px;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -1269,7 +1581,7 @@
         }
 
         .feature-item:nth-child(2) .feature-icon {
-            background: linear-gradient(135deg, #F7BF0E 0%, #EDBB1C 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             box-shadow: 0 4px 15px rgba(247, 191, 14, 0.3);
         }
 
@@ -1289,7 +1601,7 @@
         }
 
         .add-student-btn {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
             border: none;
             padding: 16px 32px;
@@ -1307,7 +1619,7 @@
         }
 
         .add-student-btn:hover {
-            background: linear-gradient(135deg, #2980b9 0%, #1f5f8b 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #1f5f8b 100%);
             transform: translateY(-2px);
             box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
         }
@@ -1397,7 +1709,7 @@
         }
 
         .submit-preview {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -1477,11 +1789,11 @@
             background: #f8f9fa;
             border-radius: 12px;
             padding: 25px;
-            border-left: 4px solid #F4A404;
+            border-left: 4px solid #006241;
         }
 
         .missing-reports-section {
-            border-left-color: #FBD405;
+            border-left-color: #006241;
         }
 
         .section-title {
@@ -1521,7 +1833,7 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background: #3498db;
+            background: #1e3a8a;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1536,7 +1848,7 @@
         }
 
         .activity-icon.edit {
-            background: #f39c12;
+            background: #065f46;
         }
 
         .activity-icon.delete {
@@ -1590,7 +1902,7 @@
             border-radius: 50%;
             object-fit: cover;
             margin-right: 12px;
-            border: 2px solid #FBD405;
+            border: 2px solid #40a829;
         }
 
         .missing-report-info {
@@ -1635,6 +1947,343 @@
             .activity-logs-section,
             .missing-reports-section {
                 padding: 20px;
+            }
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background: #ffffff;
+            padding: 20px;
+            border-right: 1px solid #eee;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 100;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 5px;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 15px;
+        }
+
+        .nav-link {
+            color: #1e3a8a;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: #e9ecef;
+        }
+
+        .nav-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .tab-btn.active {
+            background: white;
+            border-bottom-color: white;
+            color: #1e3a8a;
+            border-color: #1e3a8a;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #e9ecef;
+            color: #1e3a8a;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .success-card {
+            background: white;
+            border-left: 4px solid #1e3a8a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-card.students { border-top-color: #1e3a8a; }
+        .report-card.staff { border-top-color: #065f46; }
+        .report-card.courses { border-top-color: #1e3a8a; }
+
+        .report-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .report-icon.students { background: #1e3a8a; }
+        .report-icon.staff { background: #065f46; }
+        .report-icon.courses { background: #1e3a8a; }
+
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #1e3a8a;
+        }
+
+        .status-badge.active { background: #1e3a8a; color: white; }
+        .status-badge.inactive { background: #065f46; color: white; }
+
+        .modal-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 10px 10px 0 0;
+            margin: -25px -25px 20px -25px;
+        }
+
+        .user-management .modal-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        }
+
+        .course-management .modal-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        }
+
+        .report-section .modal-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        }
+
+        .notification-item.unread::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #1e3a8a;
+            border-radius: 50%;
+        }
+
+        .notification-item.high-priority {
+            border-left: 4px solid #065f46;
+            background: #f8fff9;
+        }
+
+        /* Loading state for stats */
+        .stat-loading {
+            font-size: 32px;
+            color: #bdc3c7;
+        }
+
+        /* Report Viewer Modal Styles */
+        .report-viewer-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .report-viewer-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 95vw;
+            max-height: 95vh;
+            width: 1200px;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            animation: reportModalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes reportModalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .report-viewer-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .report-viewer-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .report-viewer-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .download-report-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-report-btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        .close-report-viewer {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-report-viewer:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .report-viewer-content {
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .report-viewer-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0 0 16px 16px;
+        }
+
+        .report-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        .report-loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1e3a8a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        .report-error {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #e74c3c;
+            background: #fdf2f2;
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px solid #fecaca;
+        }
+
+        .report-error-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive design for report viewer */
+        @media (max-width: 768px) {
+            .report-viewer-container {
+                width: 95vw;
+                height: 90vh;
+                margin: 5vh auto;
+            }
+
+            .report-viewer-header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .report-viewer-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .report-viewer-title {
+                font-size: 18px;
             }
         }
     </style>
@@ -1724,7 +2373,7 @@
                     <div class="feature-item">
                         <div class="feature-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L12 2L3 7V9C3 14.55 6.84 19.74 12 21C17.16 19.74 21 14.55 21 9Z" fill="#3498db"/>
+                                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L12 2L3 7V9C3 14.55 6.84 19.74 12 21C17.16 19.74 21 14.55 21 9Z" fill="#1e3a8a"/>
                             </svg>
                         </div>
                         <span>Secure Registration</span>
@@ -1733,7 +2382,7 @@
                     <div class="feature-item">
                         <div class="feature-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 11H7V9H9V11ZM13 11H11V9H13V11ZM17 11H15V9H17V11ZM19 4H18V2H16V4H8V2H6V4H5C3.89 4 3.01 4.9 3.01 6L3 20C3 21.1 3.89 22 5 22H19C20.1 22 21 21.1 21 20V6C21 4.9 20.1 4 19 4ZM19 20H5V9H19V20Z" fill="#F7BF0E"/>
+                                <path d="M9 11H7V9H9V11ZM13 11H11V9H13V11ZM17 11H15V9H17V11ZM19 4H18V2H16V4H8V2H6V4H5C3.89 4 3.01 4.9 3.01 6L3 20C3 21.1 3.89 22 5 22H19C20.1 22 21 21.1 21 20V6C21 4.9 20.1 4 19 4ZM19 20H5V9H19V20Z" fill="#10b981"/>
                             </svg>
                         </div>
                         <span>Instant Processing</span>
@@ -2345,46 +2994,155 @@
             document.getElementById('searchInput').value = '';
         }
 
-        // Function to open report files (handles both URLs and data URLs)
+        // Function to open report files in modal viewer (Admin version with download)
+        let currentReportData = null;
+
         function openReportFile(fileUrl, reportType) {
             try {
                 console.log('Opening report file:', reportType, 'URL type:', fileUrl.startsWith('data:') ? 'Data URL' : 'Regular URL');
                 
+                // Store current report data for download
+                currentReportData = {
+                    url: fileUrl,
+                    type: reportType,
+                    fileExtension: getFileExtension(fileUrl)
+                };
+
+                // Show modal
+                const modal = document.getElementById('reportViewerModal');
+                const title = document.getElementById('reportViewerTitle');
+                const loading = document.getElementById('reportLoading');
+                const error = document.getElementById('reportError');
+                const iframe = document.getElementById('reportViewerIframe');
+
+                // Set title
+                title.textContent = `${reportType.toUpperCase()} Report`;
+
+                // Show modal and loading state
+                modal.style.display = 'flex';
+                loading.style.display = 'block';
+                error.style.display = 'none';
+                iframe.style.display = 'none';
+
+                // Handle different file types
                 if (fileUrl.startsWith('data:')) {
-                    // Handle data URL - create a temporary link and click it
-                    const link = document.createElement('a');
-                    link.href = fileUrl;
-                    
-                    // Extract file extension from data URL
-                    let fileExtension = 'pdf'; // default
-                    if (fileUrl.includes('data:application/pdf')) {
-                        fileExtension = 'pdf';
-                    } else if (fileUrl.includes('data:application/msword')) {
-                        fileExtension = 'doc';
-                    } else if (fileUrl.includes('data:application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
-                        fileExtension = 'docx';
+                    // For data URLs, we need to create a blob URL for the iframe
+                    try {
+                        const byteCharacters = atob(fileUrl.split(',')[1]);
+                        const byteNumbers = new Array(byteCharacters.length);
+                        for (let i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+                        const byteArray = new Uint8Array(byteNumbers);
+                        
+                        let mimeType = 'application/pdf';
+                        if (fileUrl.includes('data:application/pdf')) {
+                            mimeType = 'application/pdf';
+                        } else if (fileUrl.includes('data:application/msword')) {
+                            mimeType = 'application/msword';
+                        } else if (fileUrl.includes('data:application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
+                            mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+                        }
+
+                        const blob = new Blob([byteArray], { type: mimeType });
+                        const blobUrl = URL.createObjectURL(blob);
+                        
+                        iframe.src = blobUrl;
+                        iframe.onload = function() {
+                            loading.style.display = 'none';
+                            iframe.style.display = 'block';
+                        };
+                        iframe.onerror = function() {
+                            loading.style.display = 'none';
+                            error.style.display = 'block';
+                        };
+                    } catch (e) {
+                        console.error('Error processing data URL:', e);
+                        loading.style.display = 'none';
+                        error.style.display = 'block';
                     }
-                    
-                    // Set download filename
-                    link.download = `${reportType}_report.${fileExtension}`;
-                    link.target = '_blank';
-                    
-                    // Temporarily add to DOM, click, then remove
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    
-                    console.log('Data URL file opened successfully');
                 } else {
-                    // Handle regular URL
-                    window.open(fileUrl, '_blank');
-                    console.log('Regular URL opened successfully');
+                    // For regular URLs
+                    iframe.src = fileUrl;
+                    iframe.onload = function() {
+                        loading.style.display = 'none';
+                        iframe.style.display = 'block';
+                    };
+                    iframe.onerror = function() {
+                        loading.style.display = 'none';
+                        error.style.display = 'block';
+                    };
                 }
+
+                console.log('Report viewer opened successfully');
             } catch (error) {
                 console.error('Error opening report file:', error);
                 alert('Error opening report file. Please try again or contact support.');
             }
         }
+
+        // Function to get file extension from URL
+        function getFileExtension(fileUrl) {
+            if (fileUrl.startsWith('data:')) {
+                if (fileUrl.includes('data:application/pdf')) {
+                    return 'pdf';
+                } else if (fileUrl.includes('data:application/msword')) {
+                    return 'doc';
+                } else if (fileUrl.includes('data:application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
+                    return 'docx';
+                }
+                return 'pdf'; // default
+            } else {
+                // Extract from URL
+                const urlParts = fileUrl.split('.');
+                return urlParts[urlParts.length - 1].split('?')[0] || 'pdf';
+            }
+        }
+
+        // Function to download current report
+        function downloadCurrentReport() {
+            if (!currentReportData) {
+                alert('No report available for download');
+                return;
+            }
+
+            try {
+                const link = document.createElement('a');
+                link.href = currentReportData.url;
+                link.download = `${currentReportData.type}_report.${currentReportData.fileExtension}`;
+                link.target = '_blank';
+                
+                // Temporarily add to DOM, click, then remove
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                console.log('Report downloaded successfully');
+            } catch (error) {
+                console.error('Error downloading report:', error);
+                alert('Error downloading report. Please try again or contact support.');
+            }
+        }
+
+        // Function to close report viewer
+        function closeReportViewer() {
+            const modal = document.getElementById('reportViewerModal');
+            const iframe = document.getElementById('reportViewerIframe');
+            
+            modal.style.display = 'none';
+            iframe.src = ''; // Clear iframe source
+            currentReportData = null;
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('reportViewerModal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeReportViewer();
+                }
+            });
+        });
 
         // Modal functions
         let selectedModalRole = null;
@@ -3932,5 +4690,36 @@
             © 2025 KVTC Student Management System | Version 1.0 | Last Login: <span id="lastLoginTime">Loading...</span>
         </div>
     </footer>
+
+    <!-- Report Viewer Modal -->
+    <div class="report-viewer-modal" id="reportViewerModal">
+        <div class="report-viewer-container">
+            <div class="report-viewer-header">
+                <h3 class="report-viewer-title" id="reportViewerTitle">Report Viewer</h3>
+                <div class="report-viewer-actions">
+                    <button class="download-report-btn" id="downloadReportBtn" onclick="downloadCurrentReport()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                        </svg>
+                        Download Report
+                    </button>
+                    <button class="close-report-viewer" onclick="closeReportViewer()">&times;</button>
+                </div>
+            </div>
+            <div class="report-viewer-content">
+                <div class="report-loading" id="reportLoading">
+                    <div class="report-loading-spinner"></div>
+                    <p>Loading report...</p>
+                </div>
+                <div class="report-error" id="reportError" style="display: none;">
+                    <div class="report-error-icon">⚠️</div>
+                    <h4>Error Loading Report</h4>
+                    <p>Unable to display the report. Please try again or contact support.</p>
+                </div>
+                <iframe class="report-viewer-iframe" id="reportViewerIframe" style="display: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html> 

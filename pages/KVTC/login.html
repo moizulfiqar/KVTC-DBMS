@@ -65,12 +65,12 @@
         }
 
         .form-input:focus {
-            border-color: #3498db;
+            border-color: #1e3a8a;
         }
 
         .sign-in-btn {
             width: 100%;
-            background-color: #3498db;
+            background-color: #1e3a8a;
             color: white;
             border: none;
             padding: 14px 24px;
@@ -83,7 +83,7 @@
         }
 
         .sign-in-btn:hover {
-            background-color: #2980b9;
+            background-color: #1e3a8a;
         }
 
         .sign-in-btn:disabled {
@@ -104,7 +104,7 @@
         }
 
         .signup-link {
-            color: #3498db;
+            color: #1e3a8a;
             text-decoration: none;
             font-weight: 600;
         }
@@ -128,7 +128,7 @@
         }
 
         .progress-dot.active {
-            background-color: #3498db;
+            background-color: #1e3a8a;
         }
 
         .error-message {
@@ -152,6 +152,116 @@
 
             .login-title {
                 font-size: 28px;
+            }
+        }
+
+        @media (max-width: 414px) {
+            body {
+                padding: 15px;
+            }
+
+            .login-container {
+                padding: 25px 18px;
+                margin: 5px;
+                border-radius: 8px;
+            }
+
+            .login-title {
+                font-size: 26px;
+                margin-bottom: 30px;
+            }
+
+            .form-group {
+                margin-bottom: 18px;
+            }
+
+            .form-label {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .form-input {
+                padding: 14px 16px;
+                font-size: 15px;
+                border-radius: 6px;
+            }
+
+            .sign-in-btn {
+                padding: 16px 20px;
+                font-size: 15px;
+                border-radius: 6px;
+                margin-bottom: 18px;
+            }
+
+            .divider {
+                font-size: 15px;
+                margin-bottom: 18px;
+            }
+
+            .signup-text {
+                font-size: 15px;
+                margin-bottom: 35px;
+            }
+
+            .progress-dot {
+                width: 6px;
+                height: 6px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .login-container {
+                padding: 20px 15px;
+                margin: 2px;
+            }
+
+            .login-title {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+
+            .form-input {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+
+            .sign-in-btn {
+                padding: 14px 18px;
+                font-size: 14px;
+            }
+
+            .signup-text,
+            .divider {
+                font-size: 14px;
+            }
+
+            .form-label {
+                font-size: 14px;
+            }
+        }
+
+        /* Landscape orientation adjustments */
+        @media (max-width: 768px) and (orientation: landscape) {
+            body {
+                padding: 10px;
+            }
+
+            .login-container {
+                max-width: 500px;
+                padding: 25px 30px;
+            }
+
+            .login-title {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .progress-dots {
+                margin-top: 20px;
             }
         }
     </style>

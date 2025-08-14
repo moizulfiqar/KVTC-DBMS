@@ -65,7 +65,7 @@
         }
 
         .nav-link {
-            color: #3498db;
+            color: #1e3a8a;
             text-decoration: none;
             font-size: 16px;
             font-weight: 500;
@@ -95,12 +95,16 @@
         }
 
         .logout-btn:hover {
-            color: #F7BF0E;
+            color: #10b981;
         }
 
         .logout-icon {
             width: 20px;
             height: 20px;
+        }
+
+        .logout-icon path {
+            fill: #2c3e50;
         }
 
         /* Main Content Styles */
@@ -140,7 +144,7 @@
         }
 
         .highlight-text {
-            color: #F7BF0E;
+            color:#008000;
         }
 
         .subtitle {
@@ -184,7 +188,7 @@
         }
 
         .search-btn {
-            background: #F7BF0E;
+            background: #018749;
             color: white;
             border: none;
             padding: 18px 30px;
@@ -195,7 +199,7 @@
         }
 
         .search-btn:hover {
-            background: #EDBB1C;
+            background: #059669;
         }
 
         .search-example {
@@ -308,7 +312,7 @@
 
         .student-program {
             font-size: 14px;
-            color: #3498db;
+            color: #1e3a8a;
             font-weight: 500;
         }
 
@@ -418,13 +422,13 @@
         }
 
         .role-card-modal:hover {
-            border-color: #3498db;
+            border-color: #1e3a8a;
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .role-card-modal.selected {
-            border-color: #3498db;
+            border-color: #1e3a8a;
             background: #f8f9ff;
         }
 
@@ -446,7 +450,7 @@
         }
 
         .role-card-modal.selected .role-text-modal {
-            color: #3498db;
+            color: #1e3a8a;
         }
 
         .modal-actions {
@@ -455,7 +459,7 @@
         }
 
         .continue-modal-btn {
-            background-color: #3498db;
+            background-color: #1e3a8a;
             color: white;
             border: none;
             padding: 14px 30px;
@@ -482,7 +486,7 @@
         }
 
         .signup-modal-link {
-            color: #3498db;
+            color: #1e3a8a;
             text-decoration: none;
             font-weight: 600;
         }
@@ -519,7 +523,7 @@
         }
 
         .student-detail-header {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #2980b9 100%);
             color: white;
             padding: 30px 40px;
             border-radius: 16px 16px 0 0;
@@ -603,7 +607,7 @@
             background: #f8f9fa;
             padding: 15px 20px;
             border-radius: 8px;
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #1e3a8a;
         }
 
         .info-label {
@@ -648,7 +652,7 @@
 
         .report-type {
             display: inline-block;
-            background: #3498db;
+            background: #1e3a8a;
             color: white;
             font-size: 12px;
             font-weight: 600;
@@ -659,7 +663,7 @@
         }
 
         .report-type.mtr { background: #e74c3c; }
-        .report-type.pdr { background: #f39c12; }
+        .report-type.pdr { background: #065f46; }
         .report-type.ttb { background: #27ae60; }
         .report-type.ftr { background: #9b59b6; }
 
@@ -683,7 +687,7 @@
         }
 
         .view-report-btn {
-            background: #3498db;
+            background: #1e3a8a;
             color: white;
             border: none;
             padding: 8px 16px;
@@ -723,7 +727,7 @@
             width: 40px;
             height: 40px;
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
+            border-top: 4px solid #1e3a8a;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 15px;
@@ -794,6 +798,19 @@
             .main-heading {
                 font-size: 36px;
             }
+
+            .hero-illustration {
+                max-width: 350px;
+            }
+
+            .statistics-section {
+                padding: 30px 20px 20px 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -805,6 +822,8 @@
 
             .nav-section {
                 gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .main-content {
@@ -817,10 +836,18 @@
 
             .search-container {
                 flex-direction: column;
+                border-radius: 12px;
+            }
+
+            .search-input {
+                border-radius: 12px 12px 0 0;
+                padding: 16px 20px;
             }
 
             .search-btn {
-                padding: 15px;
+                padding: 16px 20px;
+                border-radius: 0 0 12px 12px;
+                width: 100%;
             }
 
             .brand-title {
@@ -830,6 +857,298 @@
             .logo {
                 width: 50px;
                 height: 50px;
+            }
+
+            .search-results {
+                margin-top: 10px;
+                max-height: 300px;
+            }
+
+            .result-item {
+                padding: 12px 16px;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .student-avatar {
+                width: 60px;
+                height: 60px;
+                margin-right: 0;
+            }
+
+            .student-details {
+                text-align: center;
+            }
+
+            .hero-illustration {
+                max-width: 280px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .search-example {
+                font-size: 13px;
+                text-align: center;
+            }
+
+            .statistics-section {
+                padding: 25px 15px 15px 15px;
+                margin-top: 30px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 15px;
+                text-align: center;
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+
+            .recent-students-list {
+                max-height: 150px;
+            }
+
+            .recent-student-item {
+                padding: 10px 12px;
+            }
+
+            .recent-student-avatar {
+                width: 35px;
+                height: 35px;
+                margin-right: 10px;
+            }
+
+            .recent-student-name {
+                font-size: 13px;
+            }
+
+            .recent-student-id {
+                font-size: 11px;
+            }
+
+            .recent-student-time {
+                font-size: 10px;
+            }
+
+            .reports-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .student-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 12px 15px;
+                gap: 12px;
+            }
+
+            .main-content {
+                padding: 30px 15px;
+            }
+
+            .main-heading {
+                font-size: 28px;
+                line-height: 1.3;
+            }
+
+            .search-container {
+                box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .search-input {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+
+            .search-btn {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+
+            .brand-title {
+                font-size: 18px;
+            }
+
+            .brand-subtitle {
+                font-size: 12px;
+            }
+
+            .logo {
+                width: 45px;
+                height: 45px;
+            }
+
+            .nav-link {
+                font-size: 14px;
+            }
+
+            .role-indicator {
+                font-size: 14px;
+            }
+
+            .logout-btn {
+                font-size: 14px;
+            }
+
+            .hero-illustration {
+                max-width: 250px;
+            }
+
+            .subtitle {
+                font-size: 15px;
+            }
+
+            .statistics-section {
+                padding: 20px 10px 10px 10px;
+                margin-top: 25px;
+            }
+
+            .statistics-title {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 12px;
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
+
+            .stat-label {
+                font-size: 12px;
+            }
+
+            .recent-students-title {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+
+            .recent-students-list {
+                max-height: 120px;
+            }
+
+            .recent-student-item {
+                padding: 8px 10px;
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .recent-student-avatar {
+                width: 30px;
+                height: 30px;
+                margin-right: 0;
+            }
+
+            .recent-student-info {
+                text-align: center;
+            }
+
+            .recent-student-time {
+                text-align: center;
+                margin-top: 5px;
+            }
+
+            .footer {
+                padding: 15px 10px;
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .main-heading {
+                font-size: 24px;
+            }
+
+            .search-input {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+
+            .search-btn {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+
+            .hero-illustration {
+                max-width: 220px;
+            }
+
+            .brand-title {
+                font-size: 16px;
+            }
+
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .statistics-section {
+                padding: 15px 8px 8px 8px;
+            }
+
+            .statistics-title {
+                font-size: 18px;
+            }
+
+            .stats-grid {
+                gap: 8px;
+            }
+
+            .stat-card {
+                padding: 10px;
+            }
+
+            .stat-number {
+                font-size: 20px;
+            }
+
+            .recent-students-title {
+                font-size: 15px;
+            }
+
+            .recent-students-list {
+                max-height: 100px;
+            }
+
+            .recent-student-item {
+                padding: 6px 8px;
+            }
+
+            .recent-student-name {
+                font-size: 12px;
+            }
+
+            .recent-student-id {
+                font-size: 10px;
+            }
+
+            .footer {
+                padding: 12px 8px;
+                font-size: 10px;
             }
         }
 
@@ -878,11 +1197,11 @@
         }
 
         .stat-card.recent {
-            border-left-color: #DAB23E;
+            border-left-color: #34d399;
         }
 
         .stat-card.female {
-            border-left-color: #FCC714;
+            border-left-color: #10b981;
         }
 
         .stat-card.male {
@@ -1003,6 +1322,284 @@
             .footer {
                 padding: 15px 20px;
                 font-size: 12px;
+            }
+        }
+
+        /* Report Viewer Modal Styles - Staff Version (View Only) */
+        .report-viewer-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            /* Disable text selection and context menu */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        .report-viewer-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 95vw;
+            max-height: 95vh;
+            width: 1200px;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            animation: reportModalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes reportModalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .report-viewer-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .report-viewer-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .report-viewer-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .view-only-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .close-report-viewer {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-report-viewer:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .report-viewer-content {
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            /* Disable right-click context menu and text selection */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .report-viewer-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0 0 16px 16px;
+            /* Disable text selection and context menu */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /* Disable drag and drop */
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            /* Remove browser controls */
+            pointer-events: auto;
+        }
+
+        /* Additional security measures for staff dashboard */
+        .report-viewer-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            /* Disable text selection and context menu */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        /* Hide any browser overlay controls */
+        .report-viewer-iframe::-webkit-media-controls {
+            display: none !important;
+        }
+
+        .report-viewer-iframe::-webkit-media-controls-enclosure {
+            display: none !important;
+        }
+
+        /* Disable drag for all elements in viewer */
+        .report-viewer-content *,
+        .report-viewer-iframe * {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+
+        /* Disable print styles - Staff Dashboard Only */
+        @media print {
+            .report-viewer-modal,
+            .report-viewer-container,
+            .report-viewer-content,
+            .report-viewer-iframe {
+                display: none !important;
+                visibility: hidden !important;
+            }
+            
+            body {
+                overflow: hidden !important;
+            }
+            
+            /* Hide everything when trying to print */
+            * {
+                display: none !important;
+            }
+        }
+
+        /* Additional security measures */
+        .report-viewer-modal .report-viewer-container {
+            /* Prevent iframe from being extracted */
+            isolation: isolate;
+            contain: layout style paint;
+        }
+
+        /* Disable image saving and dragging */
+        .report-viewer-content img,
+        .report-viewer-iframe img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .report-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        .report-loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1e3a8a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        .report-error {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #e74c3c;
+            background: #fdf2f2;
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px solid #fecaca;
+        }
+
+        .report-error-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive design for report viewer */
+        @media (max-width: 768px) {
+            .report-viewer-container {
+                width: 95vw;
+                height: 90vh;
+                margin: 5vh auto;
+            }
+
+            .report-viewer-header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .report-viewer-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .report-viewer-title {
+                font-size: 18px;
             }
         }
     </style>
@@ -1454,46 +2051,274 @@
             document.getElementById('searchInput').value = '';
         }
 
-        // Function to open report files (handles both URLs and data URLs)
+        // Function to open report files in modal viewer (Staff version - view only)
         function openReportFile(fileUrl, reportType) {
             try {
                 console.log('Opening report file:', reportType, 'URL type:', fileUrl.startsWith('data:') ? 'Data URL' : 'Regular URL');
                 
+                // Show modal
+                const modal = document.getElementById('reportViewerModal');
+                const title = document.getElementById('reportViewerTitle');
+                const loading = document.getElementById('reportLoading');
+                const error = document.getElementById('reportError');
+                const iframe = document.getElementById('reportViewerIframe');
+
+                // Set title
+                title.textContent = `${reportType.toUpperCase()} Report`;
+
+                // Show modal and loading state
+                modal.style.display = 'flex';
+                loading.style.display = 'block';
+                error.style.display = 'none';
+                iframe.style.display = 'none';
+
+                // Disable browser features when modal is open
+                disableBrowserFeatures();
+
+                // Handle different file types
                 if (fileUrl.startsWith('data:')) {
-                    // Handle data URL - create a temporary link and click it
-                    const link = document.createElement('a');
-                    link.href = fileUrl;
-                    
-                    // Extract file extension from data URL
-                    let fileExtension = 'pdf'; // default
-                    if (fileUrl.includes('data:application/pdf')) {
-                        fileExtension = 'pdf';
-                    } else if (fileUrl.includes('data:application/msword')) {
-                        fileExtension = 'doc';
-                    } else if (fileUrl.includes('data:application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
-                        fileExtension = 'docx';
+                    // For data URLs, we need to create a blob URL for the iframe
+                    try {
+                        const byteCharacters = atob(fileUrl.split(',')[1]);
+                        const byteNumbers = new Array(byteCharacters.length);
+                        for (let i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+                        const byteArray = new Uint8Array(byteNumbers);
+                        
+                        let mimeType = 'application/pdf';
+                        if (fileUrl.includes('data:application/pdf')) {
+                            mimeType = 'application/pdf';
+                        } else if (fileUrl.includes('data:application/msword')) {
+                            mimeType = 'application/msword';
+                        } else if (fileUrl.includes('data:application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
+                            mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+                        }
+
+                        const blob = new Blob([byteArray], { type: mimeType });
+                        const blobUrl = URL.createObjectURL(blob);
+                        
+                        iframe.src = blobUrl;
+                        iframe.onload = function() {
+                            loading.style.display = 'none';
+                            iframe.style.display = 'block';
+                            // Apply additional restrictions after iframe loads
+                            applyIframeRestrictions(iframe);
+                        };
+                        iframe.onerror = function() {
+                            loading.style.display = 'none';
+                            error.style.display = 'block';
+                        };
+                    } catch (e) {
+                        console.error('Error processing data URL:', e);
+                        loading.style.display = 'none';
+                        error.style.display = 'block';
                     }
-                    
-                    // Set download filename
-                    link.download = `${reportType}_report.${fileExtension}`;
-                    link.target = '_blank';
-                    
-                    // Temporarily add to DOM, click, then remove
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    
-                    console.log('Data URL file opened successfully');
                 } else {
-                    // Handle regular URL
-                    window.open(fileUrl, '_blank');
-                    console.log('Regular URL opened successfully');
+                    // For regular URLs
+                    iframe.src = fileUrl;
+                    iframe.onload = function() {
+                        loading.style.display = 'none';
+                        iframe.style.display = 'block';
+                        // Apply additional restrictions after iframe loads
+                        applyIframeRestrictions(iframe);
+                    };
+                    iframe.onerror = function() {
+                        loading.style.display = 'none';
+                        error.style.display = 'block';
+                    };
                 }
+
+                console.log('Report viewer opened successfully (view-only mode)');
             } catch (error) {
                 console.error('Error opening report file:', error);
                 alert('Error opening report file. Please try again or contact support.');
             }
         }
+
+        // Function to disable browser features and shortcuts
+        function disableBrowserFeatures() {
+            // Disable keyboard shortcuts
+            const disableShortcuts = function(e) {
+                // Disable Ctrl+P (Print)
+                if (e.ctrlKey && e.keyCode === 80) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                
+                // Disable Ctrl+S (Save)
+                if (e.ctrlKey && e.keyCode === 83) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                
+                // Disable Ctrl+A (Select All)
+                if (e.ctrlKey && e.keyCode === 65) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                
+                // Disable Ctrl+C (Copy)
+                if (e.ctrlKey && e.keyCode === 67) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                
+                // Disable Ctrl+V (Paste)
+                if (e.ctrlKey && e.keyCode === 86) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                
+                // Disable Ctrl+X (Cut)
+                if (e.ctrlKey && e.keyCode === 88) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                
+                // Disable F12 (Developer Tools)
+                if (e.keyCode === 123) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                
+                // Disable Ctrl+Shift+I (Developer Tools)
+                if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                
+                // Disable Ctrl+U (View Source)
+                if (e.ctrlKey && e.keyCode === 85) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                
+                // Allow only scrolling keys (Arrow keys, Page Up/Down, Home, End)
+                const allowedKeys = [
+                    33, // Page Up
+                    34, // Page Down
+                    35, // End
+                    36, // Home
+                    37, // Left Arrow
+                    38, // Up Arrow
+                    39, // Right Arrow
+                    40, // Down Arrow
+                    27  // Escape (to close modal)
+                ];
+                
+                // If it's not an allowed key and not a modifier, prevent it
+                if (!allowedKeys.includes(e.keyCode) && !e.ctrlKey && !e.altKey && !e.shiftKey) {
+                    // Allow regular scrolling and navigation but prevent other keys
+                    const functionalKeys = [8, 9, 13, 16, 17, 18, 19, 20, 27, 32]; // Backspace, Tab, Enter, Shift, Ctrl, Alt, Pause, Caps, Esc, Space
+                    if (!functionalKeys.includes(e.keyCode)) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                }
+            };
+            
+            // Disable right-click context menu
+            const disableContextMenu = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            };
+            
+            // Add event listeners
+            document.addEventListener('keydown', disableShortcuts, true);
+            document.addEventListener('contextmenu', disableContextMenu, true);
+            
+            // Store the event listeners for removal later
+            window.staffReportViewerEvents = {
+                keydown: disableShortcuts,
+                contextmenu: disableContextMenu
+            };
+        }
+
+        // Function to enable browser features when modal is closed
+        function enableBrowserFeatures() {
+            if (window.staffReportViewerEvents) {
+                document.removeEventListener('keydown', window.staffReportViewerEvents.keydown, true);
+                document.removeEventListener('contextmenu', window.staffReportViewerEvents.contextmenu, true);
+                window.staffReportViewerEvents = null;
+            }
+        }
+
+        // Function to apply iframe restrictions
+        function applyIframeRestrictions(iframe) {
+            try {
+                // Disable text selection and context menu in iframe
+                iframe.style.pointerEvents = 'auto';
+                iframe.style.userSelect = 'none';
+                iframe.style.webkitUserSelect = 'none';
+                iframe.style.mozUserSelect = 'none';
+                iframe.style.msUserSelect = 'none';
+                
+                // Try to access iframe content if same-origin
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    if (iframeDoc) {
+                        // Disable context menu in iframe
+                        iframeDoc.addEventListener('contextmenu', function(e) {
+                            e.preventDefault();
+                            return false;
+                        });
+                        
+                        // Disable text selection in iframe
+                        iframeDoc.body.style.userSelect = 'none';
+                        iframeDoc.body.style.webkitUserSelect = 'none';
+                        iframeDoc.body.style.mozUserSelect = 'none';
+                        iframeDoc.body.style.msUserSelect = 'none';
+                        
+                        // Disable drag and drop in iframe
+                        iframeDoc.addEventListener('dragstart', function(e) {
+                            e.preventDefault();
+                            return false;
+                        });
+                    }
+                } catch (e) {
+                    // Cross-origin iframe, can't access content
+                    console.log('Cross-origin iframe detected, basic restrictions applied');
+                }
+            } catch (error) {
+                console.log('Could not apply iframe restrictions:', error);
+            }
+        }
+
+        // Function to close report viewer
+        function closeReportViewer() {
+            const modal = document.getElementById('reportViewerModal');
+            const iframe = document.getElementById('reportViewerIframe');
+            
+            modal.style.display = 'none';
+            iframe.src = ''; // Clear iframe source
+            
+            // Re-enable browser features
+            enableBrowserFeatures();
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('reportViewerModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeReportViewer();
+                    }
+                });
+            }
+        });
 
         // Modal functions
         let selectedModalRole = null;
@@ -1825,5 +2650,31 @@
             © 2025 KVTC Student Management System | Version 1.0 | Last Login: <span id="lastLoginTime">Loading...</span>
         </div>
     </footer>
+
+    <!-- Report Viewer Modal - Staff Version (View Only) -->
+    <div class="report-viewer-modal" id="reportViewerModal">
+        <div class="report-viewer-container">
+            <div class="report-viewer-header">
+                <h3 class="report-viewer-title" id="reportViewerTitle">Report Viewer</h3>
+                <div class="report-viewer-actions">
+                    <span class="view-only-badge">View Only</span>
+                    <button class="close-report-viewer" onclick="closeReportViewer()">&times;</button>
+                </div>
+            </div>
+            <div class="report-viewer-content">
+                <div class="report-loading" id="reportLoading">
+                    <div class="report-loading-spinner"></div>
+                    <p>Loading report...</p>
+                </div>
+                <div class="report-error" id="reportError" style="display: none;">
+                    <div class="report-error-icon">⚠️</div>
+                    <h4>Error Loading Report</h4>
+                    <p>Unable to display the report. Please try again or contact support.</p>
+                </div>
+                <iframe class="report-viewer-iframe" id="reportViewerIframe" style="display: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html> 
