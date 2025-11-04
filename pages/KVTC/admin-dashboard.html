@@ -2338,6 +2338,22 @@
                         >
                         <button class="search-btn" onclick="searchStudent()">Find</button>
                     </div>
+                    <!-- Advanced Filters -->
+                    <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; align-items: center;">
+                        <select id="filterGender" class="search-input" style="flex: 1; min-width: 120px; font-size: 14px; padding: 10px; border-radius: 8px;">
+                            <option value="">All Genders</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        
+                        <button onclick="searchStudent()" style="background: #018749; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; white-space: nowrap;">
+                            Apply Filters
+                        </button>
+                        <button onclick="clearFilters()" style="background: #94a3b8; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; white-space: nowrap;">
+                            Clear
+                        </button>
+                    </div>
+                    
                     <div class="search-example">For example: Abdul Ghafoor</div>
                     
                     <!-- Search Results Section -->
@@ -2800,33 +2816,35 @@
         // Search functionality
         async function searchStudent() {
             const searchTerm = document.getElementById('searchInput').value.trim();
-
+            const filterGender = document.getElementById('filterGender').value;
+            
+            let query = supabase.from('Students').select('*');
+            
+            // Apply search term
             if (searchTerm) {
-                // Query Supabase Students table by name only
-                let { data: students, error } = await supabase
-                    .from('Students')
-                    .select('*')
-                    .ilike('name', `%${searchTerm}%`);
-
-                if (error) {
-                    alert('Error fetching students: ' + error.message);
-                    return;
-                }
-
-                displaySearchResults(students || [], searchTerm);
-            } else {
-                // If no search term, fetch all students
-                let { data: students, error } = await supabase
-                    .from('Students')
-                    .select('*');
-
-                if (error) {
-                    alert('Error fetching students: ' + error.message);
-                    return;
-                }
-
-                displaySearchResults(students || [], 'All Students');
+                query = query.ilike('name', `%${searchTerm}%`);
             }
+            
+            // Apply gender filter
+            if (filterGender) {
+                query = query.eq('gender', filterGender);
+            }
+            
+            const { data: students, error } = await query;
+            
+            if (error) {
+                alert('Error fetching students: ' + error.message);
+                return;
+            }
+            
+            displaySearchResults(students || [], searchTerm);
+        }
+
+        // Clear filters
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('filterGender').value = '';
+            document.getElementById('searchResults').style.display = 'none';
         }
 
         // Display search results
